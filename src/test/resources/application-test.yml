@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    name: master-test
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    port: 6377
+    database: 0

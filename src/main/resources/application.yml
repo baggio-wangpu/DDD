@@ -1,0 +1,22 @@
+server:
+  port: 8096
+  servlet:
+    context-path: /api
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://localhost:3304/bee-master
+    username: root
+    password: password
+  flyway:
+    enabled: true
+    locations: classpath:db/migration/mysql
+  redis:
+    host: localhost
+    port: 6378
+    database: 1
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false

@@ -1,0 +1,72 @@
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.2.0.RELEASE')
+        classpath "gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:5.1.4"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: "jacoco"
+apply plugin: 'idea'
+apply plugin: "org.sonarqube"
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.bee'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.projectlombok:lombok:1.18.10'
+    compile 'org.apache.commons:commons-lang3:3.9'
+    compile 'com.google.guava:guava:28.1-jre'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework.cloud:spring-cloud-starter-kubernetes-config:1.1.0.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
+    compile 'org.flywaydb:flyway-core:5.2.4'
+    compile 'org.redisson:redisson-spring-boot-starter:3.12.5'
+
+    runtime 'mysql:mysql-connector-java'
+    runtime 'org.postgresql:postgresql:42.2.9'
+    testCompile "ch.vorburger.mariaDB4j:mariaDB4j:2.4.0"
+    testCompile 'it.ozimov:embedded-redis:0.7.1'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation('io.rest-assured:rest-assured:3.0.3')
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+
+

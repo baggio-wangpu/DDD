@@ -1,0 +1,46 @@
+#!/bin/sh
+set -e
+
+BASEDIR=$(dirname "$0")
+cd $BASEDIR
+
+DOCKER_REGISTRY=${DOCKER_REGISTRY:=registry-vpc.cn-beijing.aliyuncs.com/gaia-iw}
+APP_NAME=bee-master-api
+VERSION=$(git log -n 1 --pretty=format:'%h')
+IMAGE=$DOCKER_REGISTRY/$APP_NAME:$VERSION
+HEALTH_CHECK_TIMEOUT=${HEALTH_CHECK_TIMEOUT:=45s}
+
+testMysql() {
+  SPRING_PROFILES_ACTIVE=mysql ./gradlew clean sonarqube
+}
+
+build() {
+  ./gradlew clean build -x test
+  docker build -t $APP_NAME .
+  docker tag $APP_NAME:latest $IMAGE
+  docker push $IMAGE
+  docker image rm $APP_NAME || true
+  docker image rm $IMAGE
+}
+
+deploy() {
+  /usr/local/bin/kubectl create -f k8s_configs.yaml --namespace=$NAMESPACE || true
+
+  cat k8s.yml | \
+  sed 's|\$ENV'"|$ENV|g" | \
+  sed 's|\$IMAGE'"|$IMAGE|g" | \
+  sed 's|\$APP_NAME'"|$APP_NAME|g" | \
+  sed 's|\$BEEART_HOST'"|$BEEART_HOST|g" | \
+  sed 's|\$GAIA_HOST'"|$GAIA_HOST|g" | \
+  /usr/local/bin/kubectl apply --namespace=$NAMESPACE -f -
+
+  /usr/local/bin/kubectl rollout status deploy/$APP_NAME -n $NAMESPACE --timeout=$HEALTH_CHECK_TIMEOUT
+}
+
+case $1 in
+ testMysql|build|deploy )
+   $1;;
+ * )
+   echo "not support!!! example: go <testMysql|build|deploy>"
+   exit 1;;
+esac

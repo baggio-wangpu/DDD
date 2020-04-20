@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: bee-master-api
+  cloud:
+    kubernetes:
+      enabled: false
+      reload:
+        enabled: true
+        monitoring-secrets: true
+        strategy: shutdown
+      secrets:
+        enable-api: true
+management:
+  server:
+    port: 8098
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    restart:
+      enabled: true
+    health:
+      enabled: true
+    info:
+      enabled: true
+  health:
+    db:
+      enabled: false
+---
+spring:
+  profiles: dev
+  cloud:
+    kubernetes:
+      enabled: true
+
+---
+spring:
+  profiles: qa
+  cloud:
+    kubernetes:
+      enabled: true
+---
+spring:
+  profiles: uat
+  cloud:
+    kubernetes:
+      enabled: true
+---
+spring:
+  profiles: prod
+  cloud:
+    kubernetes:
+      enabled: true
+---
+spring:
+  profiles: daimler
+  cloud:
+    kubernetes:
+      enabled: true
