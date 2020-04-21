@@ -16,7 +16,7 @@ spring:
   redis:
     host: localhost
     port: 6378
-    database: 1
+    database: 5
   jackson:
     deserialization:
       fail-on-unknown-properties: false
