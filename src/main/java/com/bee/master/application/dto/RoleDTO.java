@@ -1,7 +1,6 @@
 package com.bee.master.application.dto;
 
 import com.bee.master.adapter.jpa.entity.RoleEntity;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

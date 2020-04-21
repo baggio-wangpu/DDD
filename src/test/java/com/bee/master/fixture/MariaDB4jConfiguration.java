@@ -2,7 +2,6 @@ package com.bee.master.fixture;
 
 import ch.vorburger.exec.ManagedProcessException;
 import ch.vorburger.mariadb4j.springframework.MariaDB4jSpringService;
-import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;

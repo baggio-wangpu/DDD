@@ -3,7 +3,6 @@ package com.bee.master.adapter.restful.controller;
 import com.bee.master.common.BaseAPITest;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.web.server.LocalServerPort;
 
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.core.Is.is;

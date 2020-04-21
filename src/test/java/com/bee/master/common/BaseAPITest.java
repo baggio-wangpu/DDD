@@ -1,7 +1,6 @@
 package com.bee.master.common;
 
 import com.bee.master.fixture.EmbedRedis;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(EmbedRedis.class)
 @ActiveProfiles("test")
-public class BaseAPITest {
+public abstract class BaseAPITest {
     ObjectMapper mapper = new ObjectMapper();
 
     @LocalServerPort

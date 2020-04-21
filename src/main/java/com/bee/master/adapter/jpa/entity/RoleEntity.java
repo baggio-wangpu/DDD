@@ -1,7 +1,6 @@
 package com.bee.master.adapter.jpa.entity;
 
 import com.bee.master.application.dto.RoleDTO;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
