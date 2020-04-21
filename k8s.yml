@@ -12,10 +12,6 @@ spec:
       name: rest
       port: 8096
       targetPort: 8096
-    - protocol: TCP
-      port: 9092
-      name: websocket
-      targetPort: 9092
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -42,30 +38,23 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8096
-            - containerPort: 9092
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    nginx.org/websocket-services: $APP_NAME
+    nginx.ingress.kubernetes.io/enable-cors: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /api/$2
   name: $APP_NAME
 spec:
   rules:
-    - host: $BEEART_HOST
+    - host: $HOST
       http:
         paths:
           - backend:
               serviceName: $APP_NAME
-              servicePort: 9092
-            path: /socket.io/
-    - host: $GAIA_HOST
-      http:
-        paths:
-          - backend:
-              serviceName: $APP_NAME
-              servicePort: 9092
-            path: /socket.io/
+              servicePort: 8096
+            path: /api(/|$)(.*)
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1

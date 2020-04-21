@@ -27,20 +27,6 @@ pipeline {
                 }
             }
         }
-        stage('PostgreSQL Test') {
-            agent {
-                label 'master'
-            }
-            steps {
-                script {
-                    try {
-                        sh './ci testPG'
-                    } finally {
-                        sh './ci closePG'
-                    }
-                }
-            }
-        }
         stage('Build Image') {
             agent {
                 label 'master'
@@ -56,8 +42,7 @@ pipeline {
             environment {
                 ENV = 'dev'
                 NAMESPACE = 'gaia-dev'
-                BEEART_HOST = 'dev.beeart.hello-bees.com'
-                GAIA_HOST = 'dev.gaiafuture.cn'
+                HOST = 'dev.beemaster.hello-bees.com'
             }
             steps {
                 sh './ci deploy'
@@ -75,8 +60,7 @@ pipeline {
             environment {
                 ENV = 'qa'
                 NAMESPACE = 'gaia-qa'
-                BEEART_HOST = 'qa.beeart.hello-bees.com'
-                GAIA_HOST = 'qa.gaiafuture.cn'
+                HOST = 'qa.beemaster.hello-bees.com'
             }
             steps {
                 sh './ci deploy'
@@ -94,8 +78,7 @@ pipeline {
             environment {
                 ENV = 'uat'
                 NAMESPACE = 'gaia-uat'
-                BEEART_HOST = 'uat.beeart.hello-bees.com'
-                GAIA_HOST = 'uat.gaiafuture.cn'
+                HOST = 'uat.beemaster.hello-bees.com'
             }
             steps {
                 sh './ci deploy'
@@ -113,8 +96,7 @@ pipeline {
             environment {
                 ENV = 'prod'
                 NAMESPACE = 'gaia-prod'
-                BEEART_HOST = 'beeart.hello-bees.com'
-                GAIA_HOST = 'www.gaiafuture.cn'
+                HOST = 'beemaster.hello-bees.com'
             }
             steps {
                 sh './ci deploy'

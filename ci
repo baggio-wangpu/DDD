@@ -30,8 +30,7 @@ deploy() {
   sed 's|\$ENV'"|$ENV|g" | \
   sed 's|\$IMAGE'"|$IMAGE|g" | \
   sed 's|\$APP_NAME'"|$APP_NAME|g" | \
-  sed 's|\$BEEART_HOST'"|$BEEART_HOST|g" | \
-  sed 's|\$GAIA_HOST'"|$GAIA_HOST|g" | \
+  sed 's|\$HOST'"|$HOST|g" | \
   /usr/local/bin/kubectl apply --namespace=$NAMESPACE -f -
 
   /usr/local/bin/kubectl rollout status deploy/$APP_NAME -n $NAMESPACE --timeout=$HEALTH_CHECK_TIMEOUT
