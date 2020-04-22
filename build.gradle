@@ -36,7 +36,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.10'
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+
     implementation 'org.apache.commons:commons-lang3:3.9'
     implementation 'com.google.guava:guava:28.1-jre'
 
@@ -59,6 +60,7 @@ dependencies {
     testImplementation 'it.ozimov:embedded-redis:0.7.1'
 
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.2.0.Final")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

@@ -1,6 +1,6 @@
 package com.bee.master.adapter.restful.controller;
 
-import com.bee.master.application.response.ErrorResponse;
+import com.bee.master.application.vo.ErrorVO;
 import com.bee.master.common.exception.BaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
@@ -29,11 +29,11 @@ public class GlobalExceptionController extends AbstractErrorController {
     }
 
     @RequestMapping
-    public ResponseEntity<ErrorResponse> handleError(HttpServletRequest request) {
+    public ResponseEntity<ErrorVO> handleError(HttpServletRequest request) {
         Map<String, Object> errorAttributes = getErrorAttributes(request, false);
         String errorMessage = errorAttributes.get(ERROR_MESSAGE).toString();
         HttpStatus status = getStatus(request);
-        return ResponseEntity.status(status).body(ErrorResponse.from(BaseException.fromHttpError(errorMessage,
+        return ResponseEntity.status(status).body(ErrorVO.from(BaseException.fromHttpError(errorMessage,
                 status)));
     }
 

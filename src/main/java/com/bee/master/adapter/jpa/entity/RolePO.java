@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @Table(name = "roles")
-public class RoleEntity {
+public class RolePO {
     @Id
     @GeneratedValue(generator = "snowFlakeId")
     @GenericGenerator(name = "snowFlakeId", strategy = "com.bee.master.adapter.jpa.SnowflakeIdGenerator")
@@ -24,12 +24,12 @@ public class RoleEntity {
 
     private String description;
 
-    public RoleEntity (RoleDTO dto) {
+    public RolePO(RoleDTO dto) {
         this.title = dto.getTitle();
         this.description = dto.getDescription();
     }
 
-    public RoleEntity(String title, String desc) {
+    public RolePO(String title, String desc) {
         this.title = title;
         this.description = desc;
     }

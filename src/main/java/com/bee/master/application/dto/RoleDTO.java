@@ -1,6 +1,6 @@
 package com.bee.master.application.dto;
 
-import com.bee.master.adapter.jpa.entity.RoleEntity;
+import com.bee.master.adapter.jpa.entity.RolePO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +11,7 @@ public class RoleDTO {
     private String title;
     private String description;
 
-    public RoleDTO (RoleEntity entity) {
+    public RoleDTO (RolePO entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.description = entity.getDescription();
