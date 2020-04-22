@@ -1,7 +1,7 @@
 package com.bee.master.adapter.restful.controller;
 
 import com.bee.master.adapter.jpa.repository.RoleRepository;
-import com.bee.master.application.dto.RoleDTO;
+import com.bee.master.application.vo.RoleVO;
 import com.bee.master.common.BaseAPITest;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
@@ -28,7 +28,7 @@ class JpaDemoControllerTest extends BaseAPITest {
     void should_save_role_successful() {
         RestAssured.given()
                 .contentType(JSON)
-                .body(toJson(new RoleDTO("someTitle", "someDesc")))
+                .body(toJson(new RoleVO("someTitle", "someDesc")))
                 .when()
                 .post(getBaseUrl("public/roles"))
                 .then()

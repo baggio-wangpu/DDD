@@ -1,6 +1,6 @@
 package com.bee.master.adapter.jpa.entity;
 
-import com.bee.master.application.dto.RoleDTO;
+import com.bee.master.application.vo.RoleVO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,7 +24,7 @@ public class RolePO {
 
     private String description;
 
-    public RolePO(RoleDTO dto) {
+    public RolePO(RoleVO dto) {
         this.title = dto.getTitle();
         this.description = dto.getDescription();
     }
