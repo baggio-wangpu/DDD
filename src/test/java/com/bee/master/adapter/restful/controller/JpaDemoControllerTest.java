@@ -1,6 +1,6 @@
 package com.bee.master.adapter.restful.controller;
 
-import com.bee.master.adapter.jpa.repository.RoleRepository;
+import com.bee.master.adapter.jpa.repository.RoleJpaRepository;
 import com.bee.master.application.vo.RoleVO;
 import com.bee.master.common.BaseAPITest;
 import io.restassured.RestAssured;
@@ -17,7 +17,7 @@ import static org.hamcrest.core.Is.is;
 class JpaDemoControllerTest extends BaseAPITest {
 
     @Autowired
-    RoleRepository repository;
+    RoleJpaRepository repository;
 
     @AfterEach
     void tearDown() {
