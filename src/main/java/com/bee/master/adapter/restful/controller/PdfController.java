@@ -1,6 +1,6 @@
 package com.bee.master.adapter.restful.controller;
 
-import com.bee.master.common.utils.PdfGenerator;
+import com.bee.master.spike.PdfGenerator;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

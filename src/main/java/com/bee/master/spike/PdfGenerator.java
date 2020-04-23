@@ -1,4 +1,4 @@
-package com.bee.master.common.utils;
+package com.bee.master.spike;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
@@ -30,7 +30,7 @@ public class PdfGenerator {
     }
 
     private static Image background() throws URISyntaxException, BadElementException, IOException {
-        Path path = Paths.get(ClassLoader.getSystemResource("cert.jpeg").toURI());
+        Path path = Paths.get(ClassLoader.getSystemResource("certs/cert.jpeg").toURI());
         Image img = Image.getInstance(path.toAbsolutePath().toString());
         img.scalePercent(50);
         return img;
