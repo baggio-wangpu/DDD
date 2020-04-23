@@ -54,7 +54,7 @@ dependencies {
     implementation 'org.redisson:redisson-spring-boot-starter:3.12.5'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.10'
+    implementation group: 'com.lowagie', name: 'itext', version: '2.1.7'
 
     runtime 'mysql:mysql-connector-java'
     runtime 'org.postgresql:postgresql:42.2.9'
