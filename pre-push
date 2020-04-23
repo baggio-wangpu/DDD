@@ -1,0 +1,8 @@
+#!/bin/sh
+set -x
+
+./gradlew clean build
+
+RESULT=$?
+
+exit $RESULT
