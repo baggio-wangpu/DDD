@@ -14,8 +14,8 @@ import javax.validation.Valid;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@FeignClient(value = "token", path = "/api")
-public interface TokenClient {
+@FeignClient(value = "business", path = "/api")
+public interface UserClient {
 
     @PostMapping(path = "tokens", produces = APPLICATION_JSON_VALUE)
     public LoginVO login(@RequestBody @Valid LoginRequest params);

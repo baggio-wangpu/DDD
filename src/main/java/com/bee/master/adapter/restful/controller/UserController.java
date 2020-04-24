@@ -1,7 +1,7 @@
 package com.bee.master.adapter.restful.controller;
 
 
-import com.bee.master.adapter.client.TokenClient;
+import com.bee.master.adapter.client.UserClient;
 import com.bee.master.application.request.PasswordResetApplyRequest;
 import com.bee.master.application.request.PasswordResetRequest;
 import com.bee.master.application.request.RegisterRequest;
@@ -19,27 +19,27 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class UserController {
 
     @Resource
-    TokenClient tokenClient;
+    UserClient userClient;
 
     @PostMapping("/users/password-reset-application")
     public void applyPasswordReset(@Valid @RequestBody PasswordResetApplyRequest passwordResetApplyRequest, HttpServletRequest request) {
-        tokenClient.applyPasswordReset(passwordResetApplyRequest);
+        userClient.applyPasswordReset(passwordResetApplyRequest);
     }
 
     @PutMapping("/users/{userId}/password")
     public void updatePassword(HttpServletRequest request, @PathVariable String userId,
                                @Valid @RequestBody PasswordResetRequest passwordResetRequest) {
-        tokenClient.updatePassword(userId, passwordResetRequest);
+        userClient.updatePassword(userId, passwordResetRequest);
     }
 
     @GetMapping("/users")
     public UserVO getUserByResetKey(@RequestParam("key") String resetKey) {
-        return tokenClient.getUserByResetKey(resetKey);
+        return userClient.getUserByResetKey(resetKey);
     }
 
     @PostMapping("/users")
     @ResponseStatus(CREATED)
     public UserVO signUp(@Valid @RequestBody RegisterRequest user, HttpServletRequest request) {
-        return tokenClient.signUp(user);
+        return userClient.signUp(user);
     }
 }
