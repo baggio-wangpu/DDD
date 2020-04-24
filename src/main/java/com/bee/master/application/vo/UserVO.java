@@ -25,4 +25,6 @@ public class UserVO {
 
     private String avatar;
 
+    private boolean enabled;
+
 }
