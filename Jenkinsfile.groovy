@@ -4,6 +4,17 @@ pipeline {
         ARTIFACTORY_CREDS = credentials('ali-artifactory')
     }
     stages {
+        stage('OWASP Dependency Check') {
+            steps {
+                script {
+                    try {
+                        sh './gradlew dependencyCheckAnalyze'
+                    } finally {
+                        dependencyCheckPublisher pattern: 'build/reports/dependency-check-report.xml'
+                    }
+                }
+            }
+        }
         stage('MySQL Test') {
             agent {
                 label 'master'
