@@ -6,38 +6,38 @@ import com.bee.master.application.request.PasswordResetApplyRequest;
 import com.bee.master.application.request.PasswordResetRequest;
 import com.bee.master.application.request.RegisterRequest;
 import com.bee.master.application.vo.UserVO;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
-@RequestMapping("/public")
+@RequestMapping("/users")
+@AllArgsConstructor
 public class UserController {
 
-    @Resource
-    UserClient userClient;
+    private final UserClient userClient;
 
-    @PostMapping("/users/password-reset-application")
+    @PostMapping("password-reset-application")
     public void applyPasswordReset(@Valid @RequestBody PasswordResetApplyRequest passwordResetApplyRequest, HttpServletRequest request) {
         userClient.applyPasswordReset(passwordResetApplyRequest);
     }
 
-    @PutMapping("/users/{userId}/password")
+    @PutMapping("{userId}/password")
     public void updatePassword(HttpServletRequest request, @PathVariable String userId,
                                @Valid @RequestBody PasswordResetRequest passwordResetRequest) {
         userClient.updatePassword(userId, passwordResetRequest);
     }
 
-    @GetMapping("/users")
+    @GetMapping
     public UserVO getUserByResetKey(@RequestParam("key") String resetKey) {
         return userClient.getUserByResetKey(resetKey);
     }
 
-    @PostMapping("/users")
+    @PostMapping
     @ResponseStatus(CREATED)
     public UserVO signUp(@Valid @RequestBody RegisterRequest user, HttpServletRequest request) {
         return userClient.signUp(user);

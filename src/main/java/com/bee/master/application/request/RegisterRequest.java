@@ -14,7 +14,7 @@ import javax.validation.constraints.Pattern;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RegisterRequest {
 
-    public static final String PATTERN = "^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,16})$";
+    private static final String PASSWORD_PATTERN = "^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,16})$";
 
     @NotBlank(message = "Real name should not be blank!")
     private String realName;
@@ -23,7 +23,7 @@ public class RegisterRequest {
     private String email;
 
     @NotBlank(message = "Password should not be blank!")
-    @Pattern(message = "invalid password", regexp = PATTERN)
+    @Pattern(message = "invalid password", regexp = PASSWORD_PATTERN)
     private String password;
 
     private String invitationCode;

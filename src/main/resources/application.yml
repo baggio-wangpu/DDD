@@ -27,6 +27,4 @@ eureka:
 
 business:
   ribbon:
-    readTimeout: 20000
-    connectTimeout: 20000
     listOfServers: http://localhost:8070
