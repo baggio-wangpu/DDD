@@ -13,6 +13,6 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @FeignClient(value = "token", path = "/api")
 public interface TokenClient {
 
-    @PostMapping(path = "/tokens", produces = APPLICATION_JSON_VALUE)
+    @PostMapping(path = "tokens", produces = APPLICATION_JSON_VALUE)
     public LoginVO login(@RequestBody @Valid LoginRequest params);
 }
