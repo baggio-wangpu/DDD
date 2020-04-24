@@ -17,3 +17,6 @@ brew install OpenSSL
 ```
 brew switch openssl 1.0.2r 
 ```
+
+### uml tool
+在IntelliJ IDEA 中安装 PlantUML插件，即可打开*.puml文件
