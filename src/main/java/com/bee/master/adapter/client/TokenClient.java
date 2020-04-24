@@ -31,7 +31,7 @@ public interface TokenClient {
     @GetMapping("/users")
     public UserVO getUserByResetKey(@RequestParam("key") String resetKey);
 
-    @PostMapping
+    @PostMapping("/users")
     @ResponseStatus(CREATED)
     public UserVO signUp(@Valid @RequestBody RegisterRequest user);
 }

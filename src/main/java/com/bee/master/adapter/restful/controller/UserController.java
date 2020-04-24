@@ -22,8 +22,8 @@ public class UserController {
     TokenClient tokenClient;
 
     @PostMapping("/users/password-reset-application")
-    public void applyPasswordReset(@Valid @RequestBody PasswordResetApplyRequest request) {
-        tokenClient.applyPasswordReset(request);
+    public void applyPasswordReset(@Valid @RequestBody PasswordResetApplyRequest passwordResetApplyRequest, HttpServletRequest request) {
+        tokenClient.applyPasswordReset(passwordResetApplyRequest);
     }
 
     @PutMapping("/users/{userId}/password")
@@ -37,7 +37,7 @@ public class UserController {
         return tokenClient.getUserByResetKey(resetKey);
     }
 
-    @PostMapping
+    @PostMapping("/users")
     @ResponseStatus(CREATED)
     public UserVO signUp(@Valid @RequestBody RegisterRequest user, HttpServletRequest request) {
         return tokenClient.signUp(user);
