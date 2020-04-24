@@ -68,8 +68,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    testImplementation('io.rest-assured:rest-assured:3.0.3')
-
+    testImplementation 'io.rest-assured:rest-assured:3.0.3'
+    testImplementation 'com.tngtech.archunit:archunit:0.13.1'
 }
 
 test {
