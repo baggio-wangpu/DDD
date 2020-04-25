@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import static java.util.stream.Collectors.toList;
 
@@ -35,10 +36,10 @@ public class PageVO<T> {
                 META_KEY_TOTAL_SIZE, page.getTotalElements());
     }
 
-    public static <T, R> PageVO<T> from(Page<R> page, GenericMapper<R, T> mapper) {
+    public static <T, R> PageVO<T> from(Page<R> page, Function<? super R, ? extends T> mapper) {
         return PageVO.<T>builder()
                 .meta(generateMeta(page))
-                .data(page.getContent().stream().map(mapper::toTargetType).collect(toList()))
+                .data(page.getContent().stream().map(mapper).collect(toList()))
                 .build();
     }
 }

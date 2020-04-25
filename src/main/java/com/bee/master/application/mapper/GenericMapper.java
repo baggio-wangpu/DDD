@@ -1,14 +1,10 @@
 package com.bee.master.application.mapper;
 
-import java.util.List;
+import com.bee.master.adapter.jpa.entity.RolePO;
+import com.bee.master.application.vo.RoleVO;
+import org.mapstruct.Mapper;
 
-public interface GenericMapper<S, T> {
-
-    T toTargetType(S source);
-
-    S toSourceType(T target);
-
-    List<T> toTargetType(List<S> sourceList);
-
-    List<S> toSourceType(List<T> targetList);
+@Mapper(componentModel = "spring")
+public interface GenericMapper {
+    RoleVO poToVO(RolePO rolePO);
 }
