@@ -11,8 +11,8 @@ public class SnowFlake {
     private static final int EPOCH_BITS = 42;
     private static final int NODE_ID_BITS = 10;
     private static final int SEQUENCE_BITS = 12;
-    private static final int maxNodeId = (int) (Math.pow(2, NODE_ID_BITS) - 1);
-    private static final int maxSequence = (int) (Math.pow(2, SEQUENCE_BITS) - 1);
+    private static final int MAX_NODE_ID = (int) (Math.pow(2, NODE_ID_BITS) - 1);
+    private static final int MAX_SEQUENCE = (int) (Math.pow(2, SEQUENCE_BITS) - 1);
 
     private static final long CUSTOM_EPOCH = 1557131988965L;
 
@@ -40,7 +40,7 @@ public class SnowFlake {
             throw new IllegalStateException("Invalid System Clock!");
         }
         if (currentTimestamp == lastTimestamp) {
-            sequence = (sequence + 1) & maxSequence;
+            sequence = (sequence + 1) & MAX_SEQUENCE;
             if (sequence == 0) {
                 currentTimestamp = waitNextMillis(currentTimestamp);
             }
@@ -72,7 +72,7 @@ public class SnowFlake {
         } catch (Exception exception) {
             nodeId = (new SecureRandom().nextInt());
         }
-        nodeId = nodeId & maxNodeId;
+        nodeId = nodeId & MAX_NODE_ID;
         return nodeId;
     }
 

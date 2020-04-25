@@ -15,7 +15,7 @@ public class PdfController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<byte[]> download() {
         HttpHeaders headers = new HttpHeaders();
-        String fileName = "default";
+        String fileName;
         try {
             fileName = new String(("Certificate").getBytes("gbk"), "iso-8859-1");
             headers.setContentDispositionFormData("attachment", fileName+".pdf");

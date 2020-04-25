@@ -7,6 +7,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class UserVO {
     private String id;
 

@@ -7,9 +7,16 @@ import com.bee.master.application.request.PasswordResetRequest;
 import com.bee.master.application.request.RegisterRequest;
 import com.bee.master.application.vo.UserVO;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import static org.springframework.http.HttpStatus.CREATED;
@@ -22,12 +29,12 @@ public class UserController {
     private final UserClient userClient;
 
     @PostMapping("password-reset-application")
-    public void applyPasswordReset(@Valid @RequestBody PasswordResetApplyRequest passwordResetApplyRequest, HttpServletRequest request) {
+    public void applyPasswordReset(@Valid @RequestBody PasswordResetApplyRequest passwordResetApplyRequest) {
         userClient.applyPasswordReset(passwordResetApplyRequest);
     }
 
     @PutMapping("{userId}/password")
-    public void updatePassword(HttpServletRequest request, @PathVariable String userId,
+    public void updatePassword(@PathVariable String userId,
                                @Valid @RequestBody PasswordResetRequest passwordResetRequest) {
         userClient.updatePassword(userId, passwordResetRequest);
     }
@@ -39,7 +46,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public UserVO signUp(@Valid @RequestBody RegisterRequest user, HttpServletRequest request) {
+    public UserVO signUp(@Valid @RequestBody RegisterRequest user) {
         return userClient.signUp(user);
     }
 }

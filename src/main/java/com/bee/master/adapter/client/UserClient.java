@@ -18,20 +18,20 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public interface UserClient {
 
     @PostMapping(path = "tokens", produces = APPLICATION_JSON_VALUE)
-    public LoginVO login(@RequestBody @Valid LoginRequest params);
+    LoginVO login(@RequestBody @Valid LoginRequest params);
 
 
     @PostMapping(path = "/users/password-reset-application")
-    public void applyPasswordReset(@RequestBody @Valid PasswordResetApplyRequest params);
+    void applyPasswordReset(@RequestBody @Valid PasswordResetApplyRequest params);
 
     @PutMapping("/users/{userId}/password")
-    public void updatePassword(@PathVariable String userId,
-                               @Valid @RequestBody PasswordResetRequest passwordResetRequest);
+    void updatePassword(@PathVariable String userId,
+                        @Valid @RequestBody PasswordResetRequest passwordResetRequest);
 
     @GetMapping("/users")
-    public UserVO getUserByResetKey(@RequestParam("key") String resetKey);
+    UserVO getUserByResetKey(@RequestParam("key") String resetKey);
 
     @PostMapping("/users")
     @ResponseStatus(CREATED)
-    public UserVO signUp(@Valid @RequestBody RegisterRequest user);
+    UserVO signUp(@Valid @RequestBody RegisterRequest user);
 }

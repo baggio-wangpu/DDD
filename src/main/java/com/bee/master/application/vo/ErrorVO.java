@@ -11,7 +11,7 @@ public class ErrorVO {
 
     private String message;
 
-    private int status;
+    private Integer status;
 
     public static ErrorVO from(BaseException exception) {
         return new ErrorVO(exception.getErrorCode(), exception.getMessage(), exception.getStatus().value());

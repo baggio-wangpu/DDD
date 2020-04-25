@@ -8,18 +8,17 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
-import static org.springframework.data.domain.Sort.Direction.ASC;
-import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class PaginationRequest {
 
+    public static final String DESC_FLAG = "-";
+    public static final String ASC_FLAG = "+";
     @ApiModelProperty(required = false, example = "0")
     private Integer pageIndex;
 
@@ -42,7 +41,7 @@ public class PaginationRequest {
     private String[] getSortColumns(String sort) {
         String[] sorts = sort.split(",");
         return Arrays.stream(sorts).map(column -> {
-            if (column.startsWith("-") || column.startsWith("+")) {
+            if (column.startsWith(DESC_FLAG) || column.startsWith(ASC_FLAG)) {
                 return column.substring(1);
             }
             return column;
@@ -50,7 +49,7 @@ public class PaginationRequest {
     }
 
     private Sort.Direction getSortDirection(String sort) {
-        return sort.startsWith("-") ? DESC : ASC;
+        return sort.startsWith(DESC_FLAG) ? Sort.Direction.DESC : Sort.Direction.ASC;
     }
 
 }

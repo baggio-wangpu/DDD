@@ -17,7 +17,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,8 +34,9 @@ public class SwaggerConfig {
                 .build()
                 .apiInfo(metadata())
                 .useDefaultResponseMessages(false)
-                .securitySchemes(new ArrayList<>(Arrays.asList(new ApiKey("token", "Authorization", "Header"))))
-                .securityContexts(Arrays.asList(SecurityContext.builder()
+                .securitySchemes(new ArrayList<>(Collections.singletonList(new ApiKey("token", "Authorization",
+                        "Header"))))
+                .securityContexts(Collections.singletonList(SecurityContext.builder()
                         .securityReferences(defaultAuth())
                         .build()))
                 .genericModelSubstitutes(Optional.class);
@@ -45,7 +46,7 @@ public class SwaggerConfig {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        return Arrays.asList(new SecurityReference("token", authorizationScopes));
+        return Collections.singletonList(new SecurityReference("token", authorizationScopes));
     }
 
     private ApiInfo metadata() {
