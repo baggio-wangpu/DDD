@@ -24,7 +24,3 @@ spring:
 eureka:
   client:
     enabled: false
-
-business:
-  ribbon:
-    listOfServers: http://localhost:8070
