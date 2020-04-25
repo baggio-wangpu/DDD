@@ -9,15 +9,20 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
 public class ArchitectureTest {
 
+    public static final String COMMON = "..common..";
+    public static final String DOMAIN = "..domain..";
+    public static final String APPLICATION = "..application..";
+    public static final String ADAPTER = "..adapter..";
+
     @Test
     public void common_module_should_not_depends_on_any_other_module() {
         JavaClasses importedClasses = new ClassFileImporter().importPackages(this.getClass().getPackage().getName());
 
         ArchRule rule = noClasses().that()
-                        .resideInAPackage("..common..")
-                .should().dependOnClassesThat().resideInAPackage("..domain..")
-                .orShould().dependOnClassesThat().resideInAPackage("..application..")
-                .orShould().dependOnClassesThat().resideInAPackage("..adapter..");
+                        .resideInAPackage(COMMON)
+                .should().dependOnClassesThat().resideInAPackage(DOMAIN)
+                .orShould().dependOnClassesThat().resideInAPackage(APPLICATION)
+                .orShould().dependOnClassesThat().resideInAPackage(ADAPTER);
 
         rule.check(importedClasses);
     }
@@ -27,9 +32,9 @@ public class ArchitectureTest {
         JavaClasses importedClasses = new ClassFileImporter().importPackages(this.getClass().getPackage().getName());
 
         ArchRule rule = noClasses().that()
-                .resideInAPackage("..domain..")
-                .should().dependOnClassesThat().resideInAPackage("..application..")
-                .orShould().dependOnClassesThat().resideInAPackage("..adapter..");
+                .resideInAPackage(DOMAIN)
+                .should().dependOnClassesThat().resideInAPackage(APPLICATION)
+                .orShould().dependOnClassesThat().resideInAPackage(ADAPTER);
 
         rule.check(importedClasses);
     }
