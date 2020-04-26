@@ -3,17 +3,19 @@
 package "TrainingCamp" {
 
     class TrainingCamp <<Entity>> <<Aggregate Root>> {
-        - String trainingName
-        - String createUserId
-        - String clientName ?
+        - TrainingCampId id
+        - String trainingCampName
+        - String clientName
         - LocalDateTime startDateTime
         - LocalDateTime endDateTime
         - TrainingCampStatus status
         - List<Teacher> teachers
-        - List<Student> students
+        - List<Team> teams
         - LocalDateTime createDateTime
+        - List<Task> taskPool
         + create()
-        + inviteStudent()
+        + delete()
+        + deleteTask()
         + inviteTeacher()
     }
 
@@ -22,39 +24,40 @@ package "TrainingCamp" {
     }
 
     enum TrainingCampStatus{
-        + DRAFT
-        + PUBLISHED
-        + OFFLINE
+        + ACTIVE
+        + DELETE
+        + DELETE_FOR_EVER
     }
 
     class Task <<Value Object>> {
+        - int taskNumber
         - String taskName
         - String description
-        - Permission permission
+        - boolean visibleToStudent
         - LocalDateTime startDateTime
         - LocalDateTime endDateTime
+        - List<Tool> tools
+        - List<Attachment> attachments
         + create()
-        + delete()
     }
 
     class Tool <<Value Object>> {
-
     }
 
     class Attachment <<Value Object>> {
     }
 
-    class Permission <<Value Object>> {
-
+    class Team <<Value Object>> {
+        - String teamName
+        - List<Student> teamMembers
     }
 
     TrainingCamp *--  TrainingCampId
     TrainingCamp ..> TrainingCampStatus
     TrainingCamp "1" *-- "0..many" Task
+    TrainingCamp "1" *-- "0..many" Team
     Task "1" *-- "0..many" Tool
     Task "1" *-- "0..many" Attachment
-    Task ..> Permission
-
 }
 
 package "User" {
@@ -76,16 +79,62 @@ package "User" {
         - Teacher teacher
     }
 
-    class TrainingCampStudentRelation <<Value Object>> {
-        - TrainingCamp trainingCamp
-        - Student student
-    }
-
     Teacher ..> UserId
     Student ..> UserId
     Teacher "0..many" --* "0..many"  TrainingCampTeacherRelation
-    Student "0..many" --* "0..many"  TrainingCampStudentRelation
-    TrainingCamp "1" *-- "0..many" TrainingCampTeacherRelation
-    TrainingCamp "1" *-- "0..many" TrainingCampStudentRelation
+    TrainingCamp "many" *-- "0..many" TrainingCampTeacherRelation
+    Team "*" *-- "0..many" Student
 }
+
+package "Work" {
+
+    class Work <<Entity>> <<Aggregate Root>> {
+        - Task task
+        - Team team
+        - List<WorkCommitRecord> commitRecords
+        - CommitStatus commitStatus
+        - WorkReview workReview
+        - ReviewStatus reviewStatus
+        + review()
+    }
+
+    class WorkReview <<Value Object>> {
+        - String comment
+        - RatingType rating
+    }
+
+    enum ReviewStatus {
+        + WAITING_REVIEW
+        + REVIEWED
+    }
+
+    enum CommitStatus {
+        + WAITING_COMMIT
+        + COMMITTED
+    }
+
+
+    enum RatingType {
+        + BEYOND_EXPECTATION
+        + EXCELLENT
+        + GOOD
+        + SUGGEST_MODIFICATION
+    }
+
+    class WorkCommitRecord <<Value Object>> {
+        - Student student
+        - LocalDateTime commitDateTime
+    }
+
+    Task "1" *-- "0..many" Work
+    Work ..> RatingType
+    Work ..> ReviewStatus
+    Work ..> CommitStatus
+    Work "1" *-- "0..many" WorkCommitRecord
+    Work "1" --* Team
+    Work  --* WorkReview
+
+}
+
+
 @enduml
