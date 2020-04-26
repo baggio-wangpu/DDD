@@ -1,0 +1,91 @@
+@startuml
+
+package "TrainingCamp" {
+
+    class TrainingCamp <<Entity>> <<Aggregate Root>> {
+        - String trainingName
+        - String createUserId
+        - String clientName ?
+        - LocalDateTime startDateTime
+        - LocalDateTime endDateTime
+        - TrainingCampStatus status
+        - List<Teacher> teachers
+        - List<Student> students
+        - LocalDateTime createDateTime
+        + create()
+        + inviteStudent()
+        + inviteTeacher()
+    }
+
+    class TrainingCampId <<Value Object>> {
+        - Long id
+    }
+
+    enum TrainingCampStatus{
+        + DRAFT
+        + PUBLISHED
+        + OFFLINE
+    }
+
+    class Task <<Value Object>> {
+        - String taskName
+        - String description
+        - Permission permission
+        - LocalDateTime startDateTime
+        - LocalDateTime endDateTime
+        + create()
+        + delete()
+    }
+
+    class Tool <<Value Object>> {
+
+    }
+
+    class Attachment <<Value Object>> {
+    }
+
+    class Permission <<Value Object>> {
+
+    }
+
+    TrainingCamp *--  TrainingCampId
+    TrainingCamp ..> TrainingCampStatus
+    TrainingCamp "1" *-- "0..many" Task
+    Task "1" *-- "0..many" Tool
+    Task "1" *-- "0..many" Attachment
+    Task ..> Permission
+
+}
+
+package "User" {
+
+    class UserId <<Value Object>> {
+        - String userId
+    }
+
+    class Teacher <<Value Object>> {
+        - UserId teachId
+    }
+
+    class Student <<Value Object>> {
+        - UserId studentId
+    }
+
+    class TrainingCampTeacherRelation <<Value Object>> {
+        - TrainingCamp trainingCamp
+        - Teacher teacher
+    }
+
+    class TrainingCampStudentRelation <<Value Object>> {
+        - TrainingCamp trainingCamp
+        - Student student
+    }
+
+    Teacher ..> UserId
+    Student ..> UserId
+    Teacher "0..many" --* "0..many"  TrainingCampTeacherRelation
+    Student "0..many" --* "0..many"  TrainingCampStudentRelation
+    TrainingCamp "1" *-- "0..many" TrainingCampTeacherRelation
+    TrainingCamp "1" *-- "0..many" TrainingCampStudentRelation
+}
+@enduml
