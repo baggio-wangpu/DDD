@@ -1,5 +1,6 @@
-package com.bee.master.adapter.restful;
+package com.bee.master.adapter.restful.security;
 
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,11 +10,14 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig extends WebSecurityConfigurerAdapter {
+@AllArgsConstructor
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final JWTConfigurerAdapter jwtConfigurerAdapter;
 
     @Override
     protected void configure(HttpSecurity security) throws Exception
@@ -30,14 +34,15 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger.json",
                         "/public/**")
                 .permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and().apply(jwtConfigurerAdapter);
     }
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(asList("*"));
-        configuration.setAllowedMethods(asList("*"));
+        configuration.setAllowedOrigins(singletonList("*"));
+        configuration.setAllowedMethods(singletonList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

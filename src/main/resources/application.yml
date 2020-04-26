@@ -24,3 +24,10 @@ spring:
 eureka:
   client:
     enabled: false
+
+gaia:
+  security:
+    jwt:
+      issuer: thoughtworks
+      audience: gaia
+      secret: 30ff7468-1974-gaia-4204-8acd-0201ebd7f0c3
