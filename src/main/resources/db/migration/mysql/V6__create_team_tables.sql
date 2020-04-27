@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS bm_team_student_mapping (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1;
 
 ALTER TABLE bm_training_camp_teacher_mapping DROP INDEX `ix_bm_student`;
-ALTER TABLE bm_training_camp_teacher_mapping ADD INDEX `ix_bm_training_camp_teacher_mapping`(`training_camp_id`,`teacher_id`)
+ALTER TABLE bm_training_camp_teacher_mapping ADD INDEX `ix_bm_training_camp_teacher_mapping`(`training_camp_id`,`teacher_id`);
 
 ALTER TABLE bm_task ADD COLUMN training_camp_id BIGINT NOT NULL;
 ALTER TABLE bm_task DROP INDEX `ix_bm_task`;
-ALTER TABLE bm_task ADD INDEX `ix_bm_task`(`training_camp_id`,`id`)
+ALTER TABLE bm_task ADD INDEX `ix_bm_task`(`training_camp_id`,`id`);
