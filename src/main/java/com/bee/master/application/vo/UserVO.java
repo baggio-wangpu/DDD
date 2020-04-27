@@ -2,6 +2,8 @@ package com.bee.master.application.vo;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -28,5 +30,5 @@ public class UserVO {
 
     private boolean enabled;
 
-    private String roles;
+    private List<String> authorities;
 }

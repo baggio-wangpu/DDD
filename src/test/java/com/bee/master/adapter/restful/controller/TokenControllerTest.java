@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.jdbc.Sql;
 
 import static io.restassured.http.ContentType.JSON;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 
@@ -47,7 +49,7 @@ class TokenControllerTest extends BaseAPITest {
                 .statusCode(is(200))
                 .body("token", is(notNullValue()))
                 .body("userInfo", is(notNullValue()))
-                .body("userInfo.roles", is("TEACHER"));
+                .body("userInfo.authorities", is(singletonList("TEACHER")));
     }
 
     @Test
@@ -62,7 +64,7 @@ class TokenControllerTest extends BaseAPITest {
                 .statusCode(is(200))
                 .body("token", is(notNullValue()))
                 .body("userInfo", is(notNullValue()))
-                .body("userInfo.roles", is("STUDENT"));
+                .body("userInfo.authorities", is(singletonList("STUDENT")));
     }
 
     @Test
@@ -77,7 +79,7 @@ class TokenControllerTest extends BaseAPITest {
                 .statusCode(is(200))
                 .body("token", is(notNullValue()))
                 .body("userInfo", is(notNullValue()))
-                .body("userInfo.roles", is("TEACHER,STUDENT"));
+                .body("userInfo.authorities", is(asList("TEACHER", "STUDENT")));
     }
 
 

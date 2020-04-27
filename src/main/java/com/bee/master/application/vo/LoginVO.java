@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -18,7 +20,7 @@ public class LoginVO {
 
     private UserVO userInfo;
 
-    public void setRoles(String roles) {
-        this.getUserInfo().setRoles(roles);
+    public void setAuthorities(List<String> authorities) {
+        this.getUserInfo().setAuthorities(authorities);
     }
 }
