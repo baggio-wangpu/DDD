@@ -26,8 +26,14 @@ eureka:
     enabled: false
 
 gaia:
+  kafka:
+    bootstrap-servers: localhost:9092
+    group-id: dev_business
+    topics:
+      commands: dev_gaia_commands
+      events: dev_gaia_events
   security:
     jwt:
       issuer: thoughtworks
       audience: gaia
-      secret: 30ff7468-1974-gaia-4204-8acd-0201ebd7f0c3
+      secret: some_secret

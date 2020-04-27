@@ -25,7 +25,7 @@ apply plugin: 'org.springframework.boot'
 
 apply from: "${rootProject.projectDir}/gradle/git-hooks.gradle"
 
-dependencyManagement{
+dependencyManagement {
     imports {
         mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR4'
     }
@@ -44,6 +44,20 @@ configurations {
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    maven {
+        url 'https://repo.rdc.aliyun.com/repository/125154-snapshot-ysc4QL/'
+        credentials {
+            username mavenUser
+            password mavenPassword
+        }
+    }
+    maven {
+        url 'https://repo.rdc.aliyun.com/repository/125154-release-QkxdgB/'
+        credentials {
+            username mavenUser
+            password mavenPassword
+        }
+    }
     mavenCentral()
 }
 
@@ -68,11 +82,12 @@ dependencies {
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     implementation group: 'com.lowagie', name: 'itext', version: '2.1.7'
-
+    implementation 'com.gaia:gaia-java-sdk-collaborator:0.1.0+71-SNAPSHOT'
     runtime 'mysql:mysql-connector-java'
     runtime 'org.postgresql:postgresql:42.2.9'
     testImplementation "ch.vorburger.mariaDB4j:mariaDB4j:2.4.0"
     testImplementation 'it.ozimov:embedded-redis:0.7.1'
+    testImplementation "com.gaia:gaia-java-sdk-junit:0.1.0+71-SNAPSHOT"
 
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
     annotationProcessor("org.mapstruct:mapstruct-processor:1.2.0.Final")
