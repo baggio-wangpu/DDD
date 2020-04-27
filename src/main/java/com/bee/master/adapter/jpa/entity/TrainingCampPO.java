@@ -1,15 +1,13 @@
 package com.bee.master.adapter.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
+@Getter
 @Setter
 @Entity
 @Table(name = "bm_training_camp")

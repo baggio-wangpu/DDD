@@ -1,11 +1,9 @@
 package com.bee.master.application.vo;
 
+import com.bee.master.adapter.jpa.entity.TrainingCampPO;
 import lombok.*;
 
 import java.time.Instant;
-import java.util.List;
-
-import static java.util.Objects.isNull;
 
 @Setter
 @Getter
@@ -29,5 +27,22 @@ public class TrainingCampVO {
     private Instant createdTime;
 
     private Instant lastModifiedTime;
+
+    public static TrainingCampVO init(TrainingCampPO product) {
+        return buildBy(product);
+    }
+
+    public static TrainingCampVO buildBy(TrainingCampPO trainingCampPO) {
+        return TrainingCampVO.builder()
+                .id(trainingCampPO.getId())
+                .name(trainingCampPO.getName())
+                .clientName(trainingCampPO.getClientName())
+                .status(trainingCampPO.getStatus())
+                .startDateTime(trainingCampPO.getStartDateTime())
+                .endDateTime(trainingCampPO.getEndDateTime())
+                .lastModifiedTime(trainingCampPO.getLastModifiedTime())
+                .createdTime(trainingCampPO.getCreatedTime())
+                .build();
+    }
 
 }
