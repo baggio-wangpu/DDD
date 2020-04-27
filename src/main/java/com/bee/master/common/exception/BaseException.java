@@ -1,5 +1,6 @@
 package com.bee.master.common.exception;
 
+import com.gaia.collaborator.CollaboratorException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

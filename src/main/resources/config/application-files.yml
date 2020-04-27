@@ -1,0 +1,27 @@
+bees:
+  files:
+    attachment-types:
+      - image/jpeg
+      - image/png
+      - image/bmp
+      - text/plain
+      - application/vnd.ms-excel
+      - application/pdf
+      - application/msword
+      - application/vnd.ms-spreadsheetml
+      - application/vnd.ms-powerpoint
+      - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+      - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      - application/vnd.openxmlformats-officedocument.presentationml.presentation
+      - application/vnd.apple.pages
+      - application/vnd.apple.numbers
+      - application/vnd.apple.keynote
+      - application/x-rar-compressed
+      - application/zip
+      - application/x-xmind
+    attachment-max-size: 26214400 #25MB
+    image-types:
+      - image/jpeg
+      - image/png
+      - image/bmp
+    image-max-size: 2097152 #2MB

@@ -83,11 +83,17 @@ dependencies {
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     implementation group: 'com.lowagie', name: 'itext', version: '2.1.7'
     implementation 'com.gaia:gaia-java-sdk-collaborator:0.1.0+71-SNAPSHOT'
+    implementation group: 'org.apache.tika', name: 'tika-core', version: '1.22'
+    implementation 'com.aliyun:aliyun-java-sdk-core:3.0.0'
+    implementation 'com.aliyun:aliyun-java-sdk-dm:3.1.0'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.718'
+
     runtime 'mysql:mysql-connector-java'
     runtime 'org.postgresql:postgresql:42.2.9'
     testImplementation "ch.vorburger.mariaDB4j:mariaDB4j:2.4.0"
     testImplementation 'it.ozimov:embedded-redis:0.7.1'
     testImplementation "com.gaia:gaia-java-sdk-junit:0.1.0+71-SNAPSHOT"
+
 
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
     annotationProcessor("org.mapstruct:mapstruct-processor:1.2.0.Final")

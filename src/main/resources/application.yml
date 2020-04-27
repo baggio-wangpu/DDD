@@ -6,6 +6,8 @@ server:
 spring:
   main:
     allow-bean-definition-overriding: true
+  profiles:
+    include: files
   datasource:
     url: jdbc:mysql://localhost:3304/bee-master
     username: root
@@ -20,6 +22,20 @@ spring:
   jackson:
     deserialization:
       fail-on-unknown-properties: false
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        generate_statistics: false
+        jdbc:
+          time_zone: UTC
 
 eureka:
   client:
@@ -37,3 +53,18 @@ gaia:
       issuer: thoughtworks
       audience: gaia
       secret: some_secret
+
+file:
+  upload:
+    path: ~/tmp/
+  static:
+    access:
+      path: /api/file/
+  handler: file
+
+aliyun:
+  oss:
+    endpoint: gaia-dev.oss-cn-beijing.aliyuncs.com
+    access-key: some_access_key
+    secret-key: some_secret
+    region: oss-cn-beijing
