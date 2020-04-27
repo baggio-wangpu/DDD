@@ -25,7 +25,7 @@ public interface UserClient {
     void applyPasswordReset(@RequestBody @Valid PasswordResetApplyRequest params);
 
     @PutMapping("/users/{userId}/password")
-    void updatePassword(@PathVariable String userId,
+    void updatePassword(@PathVariable("userId") String userId,
                         @Valid @RequestBody PasswordResetRequest passwordResetRequest);
 
     @GetMapping("/users")
