@@ -21,7 +21,7 @@ public class TrainingCampLoadHandler implements CommandHandler {
 
     @Override
     public List<Event> handle(Command command) {
-        List<TrainingCampVO> camps = trainingCampReadService.getRelatedTrainingCamps(command.getCreatedBy());
+        List<TrainingCampVO> camps = trainingCampReadService.getTrainingCampsByTeacher(command.getCreatedBy());
         return of(Event.from(command)
                 .payload(camps)
                 .sendTo(of(command.getCreatedBy())));

@@ -16,15 +16,15 @@ public class TrainingCampReadService {
 
     private final TrainingCampRepository trainingCamp;
 
-    public List<TrainingCampVO> getRelatedTrainingCamps(String userId) {
-        List<TrainingCampPO> trainingCampPO = findUserRelatedCamps(userId);
+    public List<TrainingCampVO> getTrainingCampsByTeacher(String userId) {
+        List<TrainingCampPO> trainingCampPO = findTrainingCampsByTeacher(userId);
 
         return trainingCampPO.stream()
                 .map(this::buildTrainingCampLoadContent)
                 .collect(toList());
     }
 
-    private List<TrainingCampPO> findUserRelatedCamps(String userId) {
+    private List<TrainingCampPO> findTrainingCampsByTeacher(String userId) {
         return trainingCamp.findTrainingCampsByUserId(userId);
     }
 
