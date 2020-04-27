@@ -17,7 +17,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CampPO {
+public class TrainingCampPO {
 
     @Id
     @Column(name = "ID")

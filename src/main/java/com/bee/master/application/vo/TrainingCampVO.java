@@ -12,7 +12,7 @@ import static java.util.Objects.isNull;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CampVO {
+public class TrainingCampVO {
 
     private String id;
 
