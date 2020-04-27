@@ -87,6 +87,7 @@ dependencies {
     implementation 'com.aliyun:aliyun-java-sdk-core:3.0.0'
     implementation 'com.aliyun:aliyun-java-sdk-dm:3.1.0'
     implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.718'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-core', version: '1.11.718'
 
     runtime 'mysql:mysql-connector-java'
     runtime 'org.postgresql:postgresql:42.2.9'
