@@ -3,8 +3,8 @@
 package "TrainingCamp" {
 
     class TrainingCamp <<Entity>> <<Aggregate Root>> {
-        - TrainingCampId id
-        - String trainingCampName
+        - Long id
+        - String name
         - String clientName
         - LocalDateTime startDateTime
         - LocalDateTime endDateTime
@@ -12,25 +12,22 @@ package "TrainingCamp" {
         - List<Teacher> teachers
         - List<Team> teams
         - LocalDateTime createDateTime
-        - List<Task> taskPool
+        - List<Task> tasks
         + create()
         + delete()
         + deleteTask()
         + inviteTeacher()
     }
 
-    class TrainingCampId <<Value Object>> {
-        - Long id
-    }
-
     enum TrainingCampStatus{
         + ACTIVE
-        + DELETE
-        + DELETE_FOR_EVER
+        + TRASH
+        + DELETED
     }
 
     class Task <<Value Object>> {
-        - int taskNumber
+        - Long id
+        - int sortNumber
         - String taskName
         - String description
         - boolean visibleToStudent
@@ -52,7 +49,6 @@ package "TrainingCamp" {
         - List<Student> teamMembers
     }
 
-    TrainingCamp *--  TrainingCampId
     TrainingCamp ..> TrainingCampStatus
     TrainingCamp "1" *-- "0..many" Task
     TrainingCamp "1" *-- "0..many" Team
@@ -62,16 +58,12 @@ package "TrainingCamp" {
 
 package "User" {
 
-    class UserId <<Value Object>> {
-        - String userId
-    }
-
     class Teacher <<Value Object>> {
-        - UserId teachId
+        - String id
     }
 
     class Student <<Value Object>> {
-        - UserId studentId
+        - String id
     }
 
     class TrainingCampTeacherRelation <<Value Object>> {
@@ -79,8 +71,6 @@ package "User" {
         - Teacher teacher
     }
 
-    Teacher ..> UserId
-    Student ..> UserId
     Teacher "0..many" --* "0..many"  TrainingCampTeacherRelation
     TrainingCamp "many" *-- "0..many" TrainingCampTeacherRelation
     Team "*" *-- "0..many" Student
@@ -89,7 +79,8 @@ package "User" {
 package "Work" {
 
     class Work <<Entity>> <<Aggregate Root>> {
-        - Task task
+        - Long trainingCampId
+        - Long taskId
         - Team team
         - List<WorkCommitRecord> commitRecords
         - CommitStatus commitStatus
