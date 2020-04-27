@@ -94,7 +94,7 @@ dependencies {
     runtime 'org.postgresql:postgresql:42.2.9'
     testImplementation "ch.vorburger.mariaDB4j:mariaDB4j:2.4.0"
     testImplementation 'it.ozimov:embedded-redis:0.7.1'
-    testImplementation "com.gaia:gaia-java-sdk-junit:0.1.0+71-SNAPSHOT"
+    testCompile "com.gaia:gaia-java-sdk-junit:0.1.0+71-SNAPSHOT"
 
 
     annotationProcessor 'org.projectlombok:lombok:1.18.10'

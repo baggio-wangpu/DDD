@@ -1,6 +1,7 @@
 package com.bee.master.application.vo;
 
 import com.bee.master.adapter.jpa.entity.TrainingCampPO;
+import com.bee.master.domain.model.TrainingCampStatus;
 import lombok.*;
 
 import java.time.Instant;
@@ -10,6 +11,7 @@ import java.time.Instant;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class TrainingCampVO {
 
     private String id;
@@ -18,31 +20,13 @@ public class TrainingCampVO {
 
     private String clientName;
 
-    private Instant startDateTime;
+    private Instant startTime;
 
-    private Instant endDateTime;
+    private Instant endTime;
 
-    private String status;
+    private TrainingCampStatus status;
 
     private Instant createdTime;
 
     private Instant lastModifiedTime;
-
-    public static TrainingCampVO init(TrainingCampPO product) {
-        return buildBy(product);
-    }
-
-    public static TrainingCampVO buildBy(TrainingCampPO trainingCampPO) {
-        return TrainingCampVO.builder()
-                .id(trainingCampPO.getId())
-                .name(trainingCampPO.getName())
-                .clientName(trainingCampPO.getClientName())
-                .status(trainingCampPO.getStatus())
-                .startDateTime(trainingCampPO.getStartDateTime())
-                .endDateTime(trainingCampPO.getEndDateTime())
-                .lastModifiedTime(trainingCampPO.getLastModifiedTime())
-                .createdTime(trainingCampPO.getCreatedTime())
-                .build();
-    }
-
 }

@@ -7,3 +7,10 @@ spring:
   redis:
     port: 6377
     database: 0
+
+gaia:
+  kafka:
+    bootstrap-servers: false
+    topics:
+      commands: false
+      events: false

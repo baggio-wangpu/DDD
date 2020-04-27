@@ -1,4 +1,4 @@
-package com.bee.master.adapter.jpa.entity;
+package com.bee.master.domain.model;
 
 public enum TrainingCampStatus {
     ACTIVE, TRASH, DELETED

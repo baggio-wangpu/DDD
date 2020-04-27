@@ -1,11 +1,21 @@
 package com.bee.master.adapter.jpa.entity;
 
+import com.bee.master.domain.model.TrainingCampStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.annotations.OrderBy;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,34 +24,34 @@ import java.time.Instant;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class TrainingCampPO {
 
     @Id
-    @Column(name = "ID")
     private String id;
 
     @NotNull
-    @Column(name = "name", length = 64)
     private String name;
 
     @NotNull
-    @Column(name = "client_name", length = 64)
     private String clientName;
 
     @NotNull
-    @Column(name = "status", length = 64)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private TrainingCampStatus status;
 
-    @Column(name = "start_time")
-    private Instant startDateTime;
+    private Instant startTime;
 
-    @Column(name = "created_time")
-    private Instant endDateTime;
+    private Instant endTime;
 
-    @Column(name = "end_time")
     private Instant createdTime;
 
-    @Column(name = "last_modified_time")
     private Instant lastModifiedTime;
+
+    @ManyToMany
+    @JoinTable(
+      name="bm_training_camp_teacher_mapping",
+      joinColumns={@JoinColumn(name="training_camp_id")},
+      inverseJoinColumns={@JoinColumn(name="teacher_id")}
+    )
+    private List<TeacherPO> teachers;
 }

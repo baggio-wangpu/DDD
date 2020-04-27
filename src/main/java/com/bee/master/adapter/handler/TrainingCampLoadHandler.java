@@ -1,19 +1,21 @@
 package com.bee.master.adapter.handler;
 
-import com.bee.master.application.service.TrainingCampReadService;
+import com.bee.master.application.service.TeacherService;
 import com.bee.master.application.vo.TrainingCampVO;
 import com.gaia.collaborator.command.Command;
 import com.gaia.collaborator.command.CommandHandler;
 import com.gaia.collaborator.event.Event;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import static com.google.common.collect.ImmutableList.of;
 
 @AllArgsConstructor
+@Component
 public class TrainingCampLoadHandler implements CommandHandler {
 
-    private final TrainingCampReadService trainingCampReadService;
+    private final TeacherService trainingCampReadService;
     @Override
     public boolean accept(Command command) {
         return command.isType("trainingCampLoad");

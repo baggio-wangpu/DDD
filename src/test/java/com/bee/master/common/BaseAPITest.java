@@ -2,7 +2,6 @@ package com.bee.master.common;
 
 import com.bee.master.fixture.EmbedRedis;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.redisson.api.RedissonClient;
@@ -21,17 +20,11 @@ public abstract class BaseAPITest {
     protected int port;
 
     @Autowired
-    private Flyway flyway;
-
-    @Autowired
     protected RedissonClient redissonClient;
 
     @BeforeEach
     void setup() {
         redissonClient.getKeys().flushall();
-//        flyway.clean();
-//        flyway.migrate();
-
     }
 
     protected String getBaseUrl(String path) {
