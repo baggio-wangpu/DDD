@@ -1,29 +1,16 @@
 package com.bee.master.adapter.jpa.repository;
 
 import com.bee.master.adapter.jpa.entity.TrainingCampPO;
-import com.bee.master.adapter.jpa.entity.TrainingCampStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface TrainingCampRepository extends JpaRepository<TrainingCampPO, String> {
 
-    @Query(value = "select p from UserProductRole as pu left join Product as p on p.id = pu.productId where pu.userId = :userId and p.status <> 'DELETED' ORDER BY p.lastModified DESC ")
+    @Query(value = "select c from bm_training_camp_teacher_mapping as tu left join bm_training_camp as c on c.id = tu.training_camp_id where tu.teacher_id = :userId and c.status = 'ACTIVE' ORDER BY c.lastModifiedTime DESC ")
     List<TrainingCampPO> findTrainingCampsByUserId(@Param("userId") String userId);
-
-    List<TrainingCampPO> findAllByStatusIsNotOrderByLastModifiedDesc(@Param("status") TrainingCampStatus status);
-
-    @Modifying
-    @Query("update Product p set p.status = 'DELETED' where p.id = :productId AND p.status = 'IN_PROGRESS'")
-    int setTrainingCampToDeleted(@Param("trainingCampId") String trainingCampId);
-
-    TrainingCampPO findTrainingById(@Param("id") String id);
-
-    Optional<TrainingCampPO> findTrainingByNameAndStatus(@Param("name") String name, @Param("status") TrainingCampStatus status);
 }
