@@ -27,8 +27,8 @@ package "TrainingCamp" {
 
     class Task <<Value Object>> {
         - Long id
+        - String name
         - int sortNumber
-        - String taskName
         - String description
         - boolean visibleToStudent
         - LocalDateTime startDateTime
