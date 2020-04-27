@@ -9,6 +9,8 @@ data:
   gaia.kafka.group-id: dev_business
   gaia.kafka.topics.commands: dev_gaia_commands
   gaia.kafka.topics.events: dev_gaia_events
+  aliyun.oss.endpoint: gaia-dev.oss-cn-beijing-internal.aliyuncs.com
+  file.handler: oss
 kind: ConfigMap
 metadata:
   name: bee-master-api
@@ -19,6 +21,10 @@ data:
   spring.datasource.username: dGVzdA==
   spring.datasource.password: dGVzdA==
   gaia.security.jwt.secret: dGVzdA==
+  aliyun.email.secret: dGVzdA==
+  aliyun.email.access_key: dGVzdA==
+  aliyun.oss.access-key: dGVzdA==
+  aliyun.oss.secret-key: dGVzdA==
 kind: Secret
 metadata:
   name: bee-master-api
