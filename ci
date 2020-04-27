@@ -11,11 +11,11 @@ IMAGE=$DOCKER_REGISTRY/$APP_NAME:$VERSION
 HEALTH_CHECK_TIMEOUT=${HEALTH_CHECK_TIMEOUT:=45s}
 
 testMysql() {
-  SPRING_PROFILES_ACTIVE=mysql ./gradlew clean sonarqube
+  SPRING_PROFILES_ACTIVE=mysql ./gradlew clean sonarqube -P mavenUser=${ARTIFACTORY_CREDS_USR} -P mavenPassword=${ARTIFACTORY_CREDS_PSW}
 }
 
 build() {
-  ./gradlew clean build -x test
+  ./gradlew clean build -x test -P mavenUser=${ARTIFACTORY_CREDS_USR} -P mavenPassword=${ARTIFACTORY_CREDS_PSW}
   docker build -t $APP_NAME .
   docker tag $APP_NAME:latest $IMAGE
   docker push $IMAGE
