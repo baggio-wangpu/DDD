@@ -63,6 +63,12 @@ file:
   handler: file
 
 aliyun:
+  email:
+    region_id: cn-hangzhou
+    access_key: some_access_key
+    secret: some_secret
+    account: no-reply@notice.hello-bees.com
+    alias: no-reply
   oss:
     endpoint: gaia-dev.oss-cn-beijing.aliyuncs.com
     access-key: some_access_key
