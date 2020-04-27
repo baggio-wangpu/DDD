@@ -28,4 +28,5 @@ public class UserVO {
 
     private boolean enabled;
 
+    private String roles;
 }

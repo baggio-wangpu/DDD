@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@FeignClient(name = "business", url = "${feign.business.url:http://localhost:8070}", path = "/api")
+@FeignClient(name = "business", url = "${feign.business.url:http://localhost:8070}", path = "/api", primary = false)
 public interface UserClient {
 
     @PostMapping(path = "tokens", produces = APPLICATION_JSON_VALUE)

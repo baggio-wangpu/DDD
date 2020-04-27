@@ -1,7 +1,7 @@
 package com.bee.master.adapter.restful.controller;
 
-import com.bee.master.adapter.client.UserClient;
 import com.bee.master.application.request.LoginRequest;
+import com.bee.master.application.service.UserReadService;
 import com.bee.master.application.vo.LoginVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +20,10 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @AllArgsConstructor
 public class TokenController {
 
-    private final UserClient userClient;
+    private final UserReadService userReadService;
 
     @PostMapping(path = "tokens", produces = APPLICATION_JSON_VALUE)
     public LoginVO login(@RequestBody @Valid LoginRequest params) {
-        return userClient.login(params);
+        return userReadService.login(params);
     }
 }
