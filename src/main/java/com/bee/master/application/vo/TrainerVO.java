@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeacherVO {
+public class TrainerVO {
 
     private String id;
 

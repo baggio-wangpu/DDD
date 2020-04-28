@@ -20,7 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "bm_teacher")
-public class TeacherPO {
+public class TrainerPO {
 
   @Id
   private String id;
@@ -29,7 +29,7 @@ public class TeacherPO {
 
   private String avatar;
 
-  @ManyToMany(mappedBy = "teachers")
+  @ManyToMany(mappedBy = "trainers")
   @OrderBy("last_modified_time DESC")
   List<TrainingCampPO> trainingCamps;
 }

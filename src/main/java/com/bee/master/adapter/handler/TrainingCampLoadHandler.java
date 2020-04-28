@@ -18,7 +18,7 @@ public class TrainingCampLoadHandler implements CommandHandler {
     private final TeacherService teacherService;
     @Override
     public boolean accept(Command command) {
-        return command.isType("trainingCampLoad");
+        return command.isType("campLoad");
     }
 
     @Override

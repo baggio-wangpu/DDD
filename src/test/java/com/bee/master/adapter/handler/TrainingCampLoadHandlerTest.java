@@ -19,11 +19,11 @@ class TrainingCampLoadHandlerTest extends BaseAPITest {
   @Test
   void should_load_correct_training_camps_when_providing_teacher_id() {
     execute(Command.of()
-      .type("trainingCampLoad")
+      .type("campLoad")
       .createBy("teacher@email.com"));
 
     emitted(event(
-      type("trainingCampLoad"),
+      type("campLoad"),
       payload(trainingCamps -> {
         MatcherAssert.assertThat(trainingCamps.array("$"), hasSize(3));
         MatcherAssert.assertThat(trainingCamps.path("$[0].name"), is("camp3"));

@@ -15,7 +15,7 @@ public interface GenericMapper {
     @Mappings({
             @Mapping(target = "createdTime", ignore = true),
             @Mapping(target = "lastModifiedTime", ignore = true),
-            @Mapping(target = "teachers", ignore = true)
+            @Mapping(target = "trainers", ignore = true)
     })
     TrainingCampPO trainingCampToPO(TrainingCamp trainingCamp);
 

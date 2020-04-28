@@ -1,7 +1,7 @@
 package com.bee.master.application.service;
 
-import com.bee.master.adapter.jpa.entity.TeacherPO;
-import com.bee.master.adapter.jpa.repository.TeacherJpaRepository;
+import com.bee.master.adapter.jpa.entity.TrainerPO;
+import com.bee.master.adapter.jpa.repository.TrainerJpaRepository;
 import com.bee.master.application.mapper.GenericMapper;
 import com.bee.master.application.vo.TrainingCampVO;
 import com.bee.master.common.exception.BaseException;
@@ -18,7 +18,7 @@ import static java.util.stream.Collectors.toList;
 public class TeacherService {
 
     private final GenericMapper genericMapper;
-    private final TeacherJpaRepository teacherJpaRepository;
+    private final TrainerJpaRepository trainerJpaRepository;
 
     @Transactional(readOnly = true)
     public List<TrainingCampVO> getTrainingCampsByTeacher(String userId) {
@@ -28,8 +28,8 @@ public class TeacherService {
           .collect(toList());
     }
 
-    private TeacherPO getTeacher(String userId) {
-        return teacherJpaRepository.findById(userId)
+    private TrainerPO getTeacher(String userId) {
+        return trainerJpaRepository.findById(userId)
           .orElseThrow(() -> BaseException.notFound("User", userId));
     }
 }

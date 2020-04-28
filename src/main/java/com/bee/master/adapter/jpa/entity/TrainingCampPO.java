@@ -45,7 +45,7 @@ public class TrainingCampPO {
       joinColumns={@JoinColumn(name="trainingCampId")},
       inverseJoinColumns={@JoinColumn(name="teacherId")}
     )
-    private List<TeacherPO> teachers;
+    private List<TrainerPO> trainers;
 
     @OneToMany
     @JoinTable(
@@ -56,7 +56,7 @@ public class TrainingCampPO {
     private List<TaskPO> tasks;
 
     @Formula(value="(select COUNT(*) from bm_training_camp_student_mapping ts where ts.training_camp_id = id)")
-    private int studentCount;
+    private int traineeCount;
 
     @CreationTimestamp
     private LocalDateTime createdTime;

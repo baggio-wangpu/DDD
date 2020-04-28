@@ -1,8 +1,8 @@
 package com.bee.master.adapter.restful.controller;
 
 import com.bee.master.adapter.client.UserClient;
-import com.bee.master.adapter.jpa.repository.StudentJpaRepository;
-import com.bee.master.adapter.jpa.repository.TeacherJpaRepository;
+import com.bee.master.adapter.jpa.repository.TraineeJpaRepository;
+import com.bee.master.adapter.jpa.repository.TrainerJpaRepository;
 import com.bee.master.application.request.LoginRequest;
 import com.bee.master.application.vo.LoginVO;
 import com.bee.master.application.vo.UserVO;
@@ -28,15 +28,15 @@ class TokenControllerTest extends BaseAPITest {
   private UserClient userClient;
 
   @Autowired
-  private TeacherJpaRepository teacherJpaRepository;
+  private TrainerJpaRepository trainerJpaRepository;
 
   @Autowired
-  private StudentJpaRepository studentJpaRepository;
+  private TraineeJpaRepository traineeJpaRepository;
 
   @AfterEach
   void tearDown() {
-    teacherJpaRepository.deleteAll();
-    studentJpaRepository.deleteAll();
+    trainerJpaRepository.deleteAll();
+    traineeJpaRepository.deleteAll();
   }
 
   @Test

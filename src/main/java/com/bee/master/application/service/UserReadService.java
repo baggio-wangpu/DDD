@@ -1,8 +1,8 @@
 package com.bee.master.application.service;
 
 import com.bee.master.adapter.client.UserClient;
-import com.bee.master.adapter.jpa.repository.StudentJpaRepository;
-import com.bee.master.adapter.jpa.repository.TeacherJpaRepository;
+import com.bee.master.adapter.jpa.repository.TraineeJpaRepository;
+import com.bee.master.adapter.jpa.repository.TrainerJpaRepository;
 import com.bee.master.application.request.LoginRequest;
 import com.bee.master.application.vo.LoginVO;
 import lombok.AllArgsConstructor;
@@ -23,8 +23,8 @@ import static java.util.Collections.singletonList;
 public class UserReadService {
 
     private final UserClient userClient;
-    private final TeacherJpaRepository teacherJpaRepository;
-    private final StudentJpaRepository studentJpaRepository;
+    private final TrainerJpaRepository trainerJpaRepository;
+    private final TraineeJpaRepository traineeJpaRepository;
 
     public LoginVO login(LoginRequest loginRequest) {
         LoginVO loginVO = userClient.login(loginRequest);
@@ -34,8 +34,8 @@ public class UserReadService {
     }
 
     private List<String> getUserRoles(String userId) {
-        boolean hasTeacherRole = teacherJpaRepository.findById(userId).isPresent();
-        boolean hasStudentRole = studentJpaRepository.findById(userId).isPresent();
+        boolean hasTeacherRole = trainerJpaRepository.findById(userId).isPresent();
+        boolean hasStudentRole = traineeJpaRepository.findById(userId).isPresent();
         if (hasTeacherRole && hasStudentRole) {
             return asList(TEACHER.name(), STUDENT.name());
         }

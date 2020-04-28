@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "bm_student")
-public class StudentPO {
+public class TraineePO {
 
     @Id
     private String id;
