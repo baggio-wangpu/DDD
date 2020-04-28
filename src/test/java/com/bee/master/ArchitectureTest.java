@@ -1,10 +1,12 @@
 package com.bee.master;
 
+import com.bee.master.domain.framework.Entity;
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.lang.ArchRule;
 import org.junit.jupiter.api.Test;
 
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
 public class ArchitectureTest {
@@ -38,4 +40,18 @@ public class ArchitectureTest {
 
         rule.check(importedClasses);
     }
+
+    @Test
+    public void domain_model_should_not_export_public_setter_and_constructor() {
+        JavaClasses importedClasses = new ClassFileImporter().importPackages(this.getClass().getPackage().getName());
+
+        ArchRule rule = classes().that()
+          .resideInAPackage(DOMAIN)
+          .and()
+          .areAnnotatedWith(Entity.class)
+          .should().haveOnlyPrivateConstructors();
+
+        rule.check(importedClasses);
+    }
+
 }

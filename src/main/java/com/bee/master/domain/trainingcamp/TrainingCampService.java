@@ -1,6 +1,7 @@
 package com.bee.master.domain.trainingcamp;
 
 import com.bee.master.common.exception.BaseException;
+import com.bee.master.domain.framework.DomainService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,7 @@ import static java.lang.String.format;
 
 @Service
 @AllArgsConstructor
+@DomainService
 public class TrainingCampService {
 
     private final TrainingCampRepository trainingCampRepository;

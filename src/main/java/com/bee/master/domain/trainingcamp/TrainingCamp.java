@@ -1,18 +1,18 @@
 package com.bee.master.domain.trainingcamp;
 
 import com.bee.master.common.utils.SnowFlake;
+import com.bee.master.domain.framework.AggregateRoot;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AggregateRoot
 public class TrainingCamp {
 
     private long id;
