@@ -13,4 +13,8 @@ public class TeacherVO {
 
     private String id;
 
+    private String name;
+
+    private String avatar;
+
 }

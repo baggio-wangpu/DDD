@@ -1,7 +1,7 @@
 delete from bm_teacher where id = 'teacher@email.com';
-INSERT INTO bm_teacher values ('teacher@email.com');
+INSERT INTO bm_teacher(id, name) values ('teacher@email.com', 'teacher');
 delete from bm_teacher where id = 'teacher2@email.com';
-INSERT INTO bm_teacher values ('teacher2@email.com');
+INSERT INTO bm_teacher(id, name, avatar) values ('teacher2@email.com', 'teacher2', 'avatar');
 
 delete from bm_training_camp where id = 1;
 INSERT INTO bm_training_camp(id, name, client_name, status, start_time, end_time) values (1, 'camp1', 'TW', 'ACTIVE', NOW(), NOW());

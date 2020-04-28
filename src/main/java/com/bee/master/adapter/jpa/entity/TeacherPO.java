@@ -25,6 +25,10 @@ public class TeacherPO {
   @Id
   private String id;
 
+  private String name;
+
+  private String avatar;
+
   @ManyToMany(mappedBy = "teachers")
   @OrderBy("last_modified_time DESC")
   List<TrainingCampPO> trainingCamps;
