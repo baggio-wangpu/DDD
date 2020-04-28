@@ -1,32 +1,28 @@
-package com.bee.master.application.vo;
+package com.bee.master.application.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import com.bee.master.domain.model.TrainingCampStatus;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class TrainingCampVO {
+@NoArgsConstructor
+public class CreateTrainingCampRequest {
 
-    private Long id;
-
+    @NotNull
     private String name;
 
     private String clientName;
 
-    private TrainingCampStatus status;
-
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
+
 }
