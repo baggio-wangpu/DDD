@@ -2,7 +2,7 @@ package com.bee.master.adapter.handler;
 
 import com.bee.master.adapter.jpa.repository.TrainingCampJpaRepository;
 import com.bee.master.common.BaseAPITest;
-import com.bee.master.domain.model.TrainingCampStatus;
+import com.bee.master.domain.trainingcamp.TrainingCampStatus;
 import com.gaia.collaborator.command.Command;
 import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.AfterEach;

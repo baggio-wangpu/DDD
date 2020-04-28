@@ -6,7 +6,7 @@ import com.bee.master.adapter.jpa.repository.TrainingCampJpaRepository;
 import com.bee.master.adapter.jpa.repository.TrainingCampTeacherJpaRepository;
 import com.bee.master.application.request.CreateTrainingCampRequest;
 import com.bee.master.common.BaseAPITest;
-import com.bee.master.domain.model.TrainingCampStatus;
+import com.bee.master.domain.trainingcamp.TrainingCampStatus;
 import com.gaia.collaborator.command.Command;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

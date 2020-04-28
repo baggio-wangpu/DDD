@@ -1,18 +1,17 @@
 package com.bee.master.adapter.jpa.entity;
 
-import com.bee.master.domain.model.TrainingCampStatus;
+import com.bee.master.domain.trainingcamp.TrainingCamp;
+import com.bee.master.domain.trainingcamp.TrainingCampStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -31,8 +30,6 @@ import java.util.List;
 public class TrainingCampPO {
 
     @Id
-    @GeneratedValue(generator = "snowFlakeId")
-    @GenericGenerator(name = "snowFlakeId", strategy = "com.bee.master.adapter.jpa.SnowflakeIdGenerator")
     private long id;
 
     @NotNull
@@ -61,4 +58,8 @@ public class TrainingCampPO {
 
     @UpdateTimestamp
     private LocalDateTime lastModifiedTime;
+
+    public TrainingCamp toDomain() {
+        return TrainingCamp.fromPO(this.id, this.name, this.clientName, this.status, this.startTime, this.endTime);
+    }
 }

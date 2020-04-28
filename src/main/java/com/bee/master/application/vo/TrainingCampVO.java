@@ -1,13 +1,12 @@
 package com.bee.master.application.vo;
 
-import com.bee.master.adapter.jpa.entity.TeacherPO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import com.bee.master.domain.model.TrainingCampStatus;
+import com.bee.master.domain.trainingcamp.TrainingCampStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;

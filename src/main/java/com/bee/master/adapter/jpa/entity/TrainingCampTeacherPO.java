@@ -22,8 +22,6 @@ import javax.persistence.Table;
 public class TrainingCampTeacherPO {
 
     @Id
-    @GeneratedValue(generator = "snowFlakeId")
-    @GenericGenerator(name = "snowFlakeId", strategy = "com.bee.master.adapter.jpa.SnowflakeIdGenerator")
     private long id;
 
     private long trainingCampId;

@@ -3,6 +3,7 @@ package com.bee.master.adapter.jpa.repository;
 import com.bee.master.adapter.jpa.entity.TrainingCampPO;
 import com.bee.master.adapter.jpa.entity.TrainingCampTeacherPO;
 import com.bee.master.application.mapper.GenericMapper;
+import com.bee.master.common.utils.SnowFlake;
 import com.bee.master.domain.trainingcamp.TrainingCamp;
 import com.bee.master.domain.trainingcamp.TrainingCampRepository;
 import lombok.AllArgsConstructor;
@@ -27,13 +28,13 @@ public class TrainingCampRepositoryImpl implements TrainingCampRepository {
     public TrainingCamp save(TrainingCamp trainingCamp, String createUserId) {
         TrainingCampPO trainingCampPO = trainingCampJpaRepository.save(genericMapper.trainingCampToPO(trainingCamp));
         saveTrainingCampTeacher(createUserId, trainingCampPO);
-        return genericMapper.trainingCampPOToDomain(trainingCampPO);
+        return trainingCampPO.toDomain();
     }
 
     @Override
     public List<TrainingCamp> findTrainingCampsByUserId(String userId) {
         List<TrainingCampPO> trainingCampPOS = trainingCampJpaRepository.findTrainingCampsByUserId(userId);
-        return trainingCampPOS.stream().map(genericMapper::trainingCampPOToDomain).collect(toList());
+        return trainingCampPOS.stream().map(TrainingCampPO::toDomain).collect(toList());
     }
 
     @Override
@@ -41,7 +42,7 @@ public class TrainingCampRepositoryImpl implements TrainingCampRepository {
         Optional<TrainingCampPO> optionalTrainingCampPO = trainingCampJpaRepository.findById(trainingCampId);
         TrainingCampPO trainingCampPO = optionalTrainingCampPO.orElseThrow(()
                 -> new EntityNotFoundException(format("Training camp could not found for %s", trainingCampId)));
-        return genericMapper.trainingCampPOToDomain(trainingCampPO);
+        return trainingCampPO.toDomain();
     }
 
     @Override
@@ -51,6 +52,7 @@ public class TrainingCampRepositoryImpl implements TrainingCampRepository {
 
     private void saveTrainingCampTeacher(String createUserId, TrainingCampPO trainingCampPO) {
         TrainingCampTeacherPO trainingCampTeacherPO = TrainingCampTeacherPO.builder()
+                .id(SnowFlake.nextIdentity())
                 .trainingCampId(trainingCampPO.getId())
                 .teacherId(createUserId)
                 .build();

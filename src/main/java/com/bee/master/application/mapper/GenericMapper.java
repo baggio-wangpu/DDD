@@ -19,7 +19,5 @@ public interface GenericMapper {
     })
     TrainingCampPO trainingCampToPO(TrainingCamp trainingCamp);
 
-    TrainingCamp trainingCampPOToDomain(TrainingCampPO trainingCampPO);
-
     TrainingCampVO trainingCampPOToVO(TrainingCampPO trainingCampPO);
 }
