@@ -15,7 +15,7 @@ import static com.google.common.collect.ImmutableList.of;
 @Component
 public class TrainingCampLoadHandler implements CommandHandler {
 
-    private final TeacherService trainingCampReadService;
+    private final TeacherService teacherService;
     @Override
     public boolean accept(Command command) {
         return command.isType("trainingCampLoad");
@@ -23,7 +23,7 @@ public class TrainingCampLoadHandler implements CommandHandler {
 
     @Override
     public List<Event> handle(Command command) {
-        List<TrainingCampVO> camps = trainingCampReadService.getTrainingCampsByTeacher(command.getCreatedBy());
+        List<TrainingCampVO> camps = teacherService.getTrainingCampsByTeacher(command.getCreatedBy());
         return of(Event.from(command)
                 .payload(camps)
                 .sendTo(of(command.getCreatedBy())));
