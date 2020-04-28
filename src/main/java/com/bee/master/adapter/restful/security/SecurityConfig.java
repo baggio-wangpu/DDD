@@ -3,6 +3,7 @@ package com.bee.master.adapter.restful.security;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,34 +18,34 @@ import static java.util.Collections.singletonList;
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final JWTConfigurerAdapter jwtConfigurerAdapter;
+  private final JWTConfigurerAdapter jwtConfigurerAdapter;
 
-    @Override
-    protected void configure(HttpSecurity security) throws Exception
-    {
-        security.csrf().disable()
-                .cors().and()
-                .httpBasic().disable()
-                .authorizeRequests()
-                .antMatchers(
-                        "/v2/api-docs",
-                        "/swagger-resources/**",
-                        "/swagger-ui.html",
-                        "/webjars/**" ,
-                        "/swagger.json",
-                        "/public/**")
-                .permitAll()
-                .anyRequest().authenticated()
-                .and().apply(jwtConfigurerAdapter);
-    }
+  @Override
+  protected void configure(HttpSecurity security) throws Exception {
+    security.csrf().disable()
+      .cors().and()
+      .httpBasic().disable()
+      .authorizeRequests()
+      .antMatchers(
+        "/v2/api-docs",
+        "/swagger-resources/**",
+        "/swagger-ui.html",
+        "/webjars/**",
+        "/swagger.json")
+      .permitAll()
+      .antMatchers(HttpMethod.POST, "/tokens", "/users")
+      .permitAll()
+      .anyRequest().authenticated()
+      .and().apply(jwtConfigurerAdapter);
+  }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(singletonList("*"));
-        configuration.setAllowedMethods(singletonList("*"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+  @Bean
+  CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration configuration = new CorsConfiguration();
+    configuration.setAllowedOrigins(singletonList("*"));
+    configuration.setAllowedMethods(singletonList("*"));
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", configuration);
+    return source;
+  }
 }

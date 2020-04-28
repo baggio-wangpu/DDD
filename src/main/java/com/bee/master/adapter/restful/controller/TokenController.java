@@ -16,13 +16,13 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Slf4j
 @RestController
-@RequestMapping("/public")
+@RequestMapping("tokens")
 @AllArgsConstructor
 public class TokenController {
 
     private final UserReadService userReadService;
 
-    @PostMapping(path = "tokens", produces = APPLICATION_JSON_VALUE)
+    @PostMapping(produces = APPLICATION_JSON_VALUE)
     public LoginVO login(@RequestBody @Valid LoginRequest params) {
         return userReadService.login(params);
     }

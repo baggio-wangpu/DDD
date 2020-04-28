@@ -74,3 +74,6 @@ aliyun:
     access-key: some_access_key
     secret-key: some_secret
     region: oss-cn-beijing
+feign:
+  business:
+    url: https://dev.beeart.hello-bees.com/

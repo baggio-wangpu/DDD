@@ -8,10 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("public")
+@RequestMapping("pdf")
 public class PdfController {
 
-    @GetMapping(path = "pdf")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<byte[]> download() {
         HttpHeaders headers = new HttpHeaders();
