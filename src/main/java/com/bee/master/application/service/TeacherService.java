@@ -24,7 +24,7 @@ public class TeacherService {
     public List<TrainingCampVO> getTrainingCampsByTeacher(String userId) {
         return getTeacher(userId)
           .getTrainingCamps().stream()
-          .map(genericMapper::poToVO)
+          .map(genericMapper::trainingCampPOToVO)
           .collect(toList());
     }
 
