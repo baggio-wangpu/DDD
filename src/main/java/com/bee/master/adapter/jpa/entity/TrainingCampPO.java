@@ -1,9 +1,7 @@
 package com.bee.master.adapter.jpa.entity;
 
 import com.bee.master.domain.model.TrainingCampStatus;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.annotations.OrderBy;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
