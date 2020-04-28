@@ -32,4 +32,6 @@ public class TrainingCampVO {
     private LocalDateTime endTime;
 
     private List<TeacherVO> teachers;
+
+    private List<TaskVO> tasks;
 }

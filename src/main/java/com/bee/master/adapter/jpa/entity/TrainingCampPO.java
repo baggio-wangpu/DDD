@@ -9,14 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -52,6 +45,14 @@ public class TrainingCampPO {
       inverseJoinColumns={@JoinColumn(name="teacherId")}
     )
     private List<TeacherPO> teachers;
+
+    @OneToMany
+    @JoinTable(
+            name="bm_task",
+            joinColumns={@JoinColumn(name="trainingCampId")},
+            inverseJoinColumns={@JoinColumn(name="id")}
+    )
+    private List<TaskPO> tasks;
 
     @CreationTimestamp
     private LocalDateTime createdTime;
