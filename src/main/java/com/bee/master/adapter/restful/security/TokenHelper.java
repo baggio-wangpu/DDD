@@ -17,24 +17,16 @@ public class TokenHelper {
 
     private final JWTVerifier jwtVerifier;
 
-    public boolean validateToken(String token) {
-        try {
-            jwtVerifier.verify(token);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     public Authentication getAuthentication(String token) {
-        String userId = getVerifiedUserId(token);
-        return new UsernamePasswordAuthenticationToken(userId, null, emptySet());
+        try {
+            String userId = getVerifiedUserId(token);
+            return new UsernamePasswordAuthenticationToken(userId, null, emptySet());
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     private String getVerifiedUserId(String token) throws JWTVerificationException {
-        if (StringUtils.isBlank(token)) {
-            return null;
-        }
         DecodedJWT decodedJWT = jwtVerifier.verify(token);
         return decodedJWT.getSubject();
     }
