@@ -3,6 +3,11 @@ INSERT INTO bm_teacher(id, name) values ('teacher@email.com', 'teacher');
 delete from bm_teacher where id = 'teacher2@email.com';
 INSERT INTO bm_teacher(id, name, avatar) values ('teacher2@email.com', 'teacher2', 'avatar');
 
+delete from bm_student where id = 'student@email.com';
+INSERT INTO bm_student(id) values ('student@email.com');
+delete from bm_student where id = 'student2@email.com';
+INSERT INTO bm_student(id) values ('student2@email.com');
+
 delete from bm_training_camp where id = 1;
 INSERT INTO bm_training_camp(id, name, client_name, status, start_time, end_time) values (1, 'camp1', 'TW', 'ACTIVE', NOW(), NOW());
 
@@ -25,3 +30,10 @@ INSERT INTO bm_training_camp_teacher_mapping(id, teacher_id, training_camp_id) v
 INSERT INTO bm_training_camp_teacher_mapping(id, teacher_id, training_camp_id) values (2, 'teacher@email.com', 2);
 INSERT INTO bm_training_camp_teacher_mapping(id, teacher_id, training_camp_id) values (3, 'teacher@email.com', 3);
 INSERT INTO bm_training_camp_teacher_mapping(id, teacher_id, training_camp_id) values (4, 'teacher2@email.com', 3);
+
+delete from bm_training_camp_student_mapping where student_id = 'student@email.com';
+delete from bm_training_camp_student_mapping where student_id = 'student2@email.com';
+
+INSERT INTO bm_training_camp_student_mapping(id, student_id, training_camp_id) values (1, 'student@email.com', 1);
+INSERT INTO bm_training_camp_student_mapping(id, student_id, training_camp_id) values (2, 'student@email.com', 3);
+INSERT INTO bm_training_camp_student_mapping(id, student_id, training_camp_id) values (3, 'student2@email.com', 3);

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -53,6 +54,9 @@ public class TrainingCampPO {
             inverseJoinColumns={@JoinColumn(name="id")}
     )
     private List<TaskPO> tasks;
+
+    @Formula(value="(select COUNT(*) from bm_training_camp_student_mapping ts where ts.training_camp_id = id)")
+    private int studentCount;
 
     @CreationTimestamp
     private LocalDateTime createdTime;

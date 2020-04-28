@@ -34,4 +34,6 @@ public class TrainingCampVO {
     private List<TeacherVO> teachers;
 
     private List<TaskVO> tasks;
+
+    private int studentCount;
 }
