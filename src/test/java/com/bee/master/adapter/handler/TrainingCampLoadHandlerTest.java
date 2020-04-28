@@ -25,9 +25,10 @@ class TrainingCampLoadHandlerTest extends BaseAPITest {
     emitted(event(
       type("trainingCampLoad"),
       payload(trainingCamps -> {
-        MatcherAssert.assertThat(trainingCamps.array("$"), hasSize(2));
+        MatcherAssert.assertThat(trainingCamps.array("$"), hasSize(3));
         MatcherAssert.assertThat(trainingCamps.path("$[0].name"), is("camp3"));
         MatcherAssert.assertThat(trainingCamps.path("$[1].name"), is("camp1"));
+        MatcherAssert.assertThat(trainingCamps.path("$[2].name"), is("camp2"));
       })
     ));
   }

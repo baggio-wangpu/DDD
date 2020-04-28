@@ -26,7 +26,6 @@ public class TeacherPO {
   private String id;
 
   @ManyToMany(mappedBy = "teachers")
-  @Where(clause = "status = 'ACTIVE'")
   @OrderBy("last_modified_time DESC")
   List<TrainingCampPO> trainingCamps;
 }
