@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.is;
 @Sql({"/sqls/insert_teachers_data.sql"})
 class TrainingCampLoadHandlerTest extends BaseAPITest {
   @Test
-  void should_add_comment_count_when_related_user_comment_on_product() {
+  void should_load_correct_training_camps_when_providing_teacher_id() {
     execute(Command.of()
       .type("trainingCampLoad")
       .createBy("teacher@email.com"));
