@@ -21,5 +21,11 @@ public class TaskPO {
     @Id
     private String id;
 
+    private String name;
+
     private String trainingCampId;
+
+    private int sortNumber;
+
+    private int visible;
 }

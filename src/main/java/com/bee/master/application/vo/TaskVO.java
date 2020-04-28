@@ -14,5 +14,11 @@ public class TaskVO {
 
     private String id;
 
+    private String name;
+
     private String trainingCampId;
+
+    private int sortNumber;
+
+    private int visible;
 }
