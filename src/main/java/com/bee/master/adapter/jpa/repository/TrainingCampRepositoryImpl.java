@@ -32,12 +32,6 @@ public class TrainingCampRepositoryImpl implements TrainingCampRepository {
     }
 
     @Override
-    public List<TrainingCamp> findTrainingCampsByUserId(String userId) {
-        List<TrainingCampPO> trainingCampPOS = trainingCampJpaRepository.findTrainingCampsByUserId(userId);
-        return trainingCampPOS.stream().map(TrainingCampPO::toDomain).collect(toList());
-    }
-
-    @Override
     public TrainingCamp findById(Long trainingCampId) {
         Optional<TrainingCampPO> optionalTrainingCampPO = trainingCampJpaRepository.findById(trainingCampId);
         TrainingCampPO trainingCampPO = optionalTrainingCampPO.orElseThrow(()
