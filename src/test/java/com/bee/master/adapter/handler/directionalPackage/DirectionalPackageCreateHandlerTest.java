@@ -21,7 +21,6 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
 class DirectionalPackageCreateHandlerTest extends BaseAPITest {
-
   @Autowired
   private DirectionalPackageJpaRepository directionalPackageJpaRepository;
 
