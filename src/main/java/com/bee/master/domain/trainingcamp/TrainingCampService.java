@@ -1,7 +1,7 @@
 package com.bee.master.domain.trainingcamp;
 
 import com.bee.master.infrastructure.exception.BaseException;
-import com.bee.master.infrastructure.ddd.framework.DomainService;
+import com.bee.master.domain.framework.DomainService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.bee.master.infrastructure.ddd.framework;
+package com.bee.master.domain.framework;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -10,5 +10,6 @@ import static java.lang.annotation.ElementType.TYPE;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value={TYPE})
-public @interface ValueObject {
+@Entity
+public @interface AggregateRoot {
 }

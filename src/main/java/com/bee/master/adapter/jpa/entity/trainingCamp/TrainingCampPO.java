@@ -7,10 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,17 +52,6 @@ public class TrainingCampPO {
       inverseJoinColumns={@JoinColumn(name="teacherId")}
     )
     private List<TrainerPO> trainers;
-
-    @OneToMany
-    @JoinTable(
-            name="bm_task",
-            joinColumns={@JoinColumn(name="trainingCampId")},
-            inverseJoinColumns={@JoinColumn(name="id")}
-    )
-    private List<TaskPO> tasks;
-
-    @Formula(value="(select COUNT(*) from bm_training_camp_student_mapping ts where ts.training_camp_id = id)")
-    private int traineeCount;
 
     @CreationTimestamp
     private LocalDateTime createdTime;
