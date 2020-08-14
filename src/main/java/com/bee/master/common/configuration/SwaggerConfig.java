@@ -1,4 +1,4 @@
-package com.bee.master.adapter.restful;
+package com.bee.master.common.configuration;
 
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
