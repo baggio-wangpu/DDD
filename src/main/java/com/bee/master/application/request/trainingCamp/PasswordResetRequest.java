@@ -1,6 +1,6 @@
 package com.bee.master.application.request.trainingCamp;
 
-import com.bee.master.common.exception.BaseException;
+import com.bee.master.infrastructure.exception.BaseException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

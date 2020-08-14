@@ -4,7 +4,7 @@ import com.bee.master.adapter.jpa.entity.trainingCamp.TrainerPO;
 import com.bee.master.adapter.jpa.repository.trainingCamp.TrainerJpaRepository;
 import com.bee.master.application.mapper.GenericMapper;
 import com.bee.master.application.vo.TrainingCampVO;
-import com.bee.master.common.exception.BaseException;
+import com.bee.master.infrastructure.exception.BaseException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

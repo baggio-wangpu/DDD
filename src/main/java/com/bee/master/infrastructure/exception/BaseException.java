@@ -1,4 +1,4 @@
-package com.bee.master.common.exception;
+package com.bee.master.infrastructure.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

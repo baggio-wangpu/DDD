@@ -3,7 +3,7 @@ package com.bee.master.adapter.jpa.repository.trainingCamp;
 import com.bee.master.adapter.jpa.entity.trainingCamp.TrainingCampPO;
 import com.bee.master.adapter.jpa.entity.trainingCamp.TrainingCampTeacherPO;
 import com.bee.master.application.mapper.GenericMapper;
-import com.bee.master.common.utils.SnowFlake;
+import com.bee.master.infrastructure.utils.SnowFlake;
 import com.bee.master.domain.trainingcamp.TrainingCamp;
 import com.bee.master.domain.trainingcamp.TrainingCampRepository;
 import lombok.AllArgsConstructor;

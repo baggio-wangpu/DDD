@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.bee.master.common.RoleType.STUDENT;
-import static com.bee.master.common.RoleType.TEACHER;
+import static com.bee.master.domain.trainingcamp.RoleType.STUDENT;
+import static com.bee.master.domain.trainingcamp.RoleType.TEACHER;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;

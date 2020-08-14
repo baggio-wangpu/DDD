@@ -1,6 +1,6 @@
 package com.bee.master.application.vo;
 
-import com.bee.master.common.exception.BaseException;
+import com.bee.master.infrastructure.exception.BaseException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

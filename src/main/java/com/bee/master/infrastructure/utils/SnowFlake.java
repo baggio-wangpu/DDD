@@ -1,4 +1,4 @@
-package com.bee.master.common.utils;
+package com.bee.master.infrastructure.utils;
 
 import java.net.NetworkInterface;
 import java.security.SecureRandom;

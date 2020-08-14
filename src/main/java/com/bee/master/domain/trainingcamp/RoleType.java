@@ -3,6 +3,7 @@ package com.bee.master.domain.trainingcamp;
 import com.bee.master.infrastructure.ddd.framework.ValueObject;
 
 @ValueObject
-public enum TrainingCampStatus {
-    ACTIVE, TRASH, DELETED
+public enum  RoleType {
+    TEACHER,
+    STUDENT
 }

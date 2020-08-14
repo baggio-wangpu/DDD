@@ -1,4 +1,4 @@
-package com.bee.master.common.configuration.security;
+package com.bee.master.infrastructure.configuration.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;

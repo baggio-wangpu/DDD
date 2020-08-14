@@ -1,4 +1,4 @@
-package com.bee.master.common.configuration.security;
+package com.bee.master.infrastructure.configuration.security;
 
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.exceptions.JWTVerificationException;

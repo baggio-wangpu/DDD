@@ -1,6 +1,6 @@
 package com.bee.master.domain.trainingcamp;
 
-import com.bee.master.common.ddd.framework.DomainRepository;
+import com.bee.master.infrastructure.ddd.framework.DomainRepository;
 
 @DomainRepository
 public interface TrainingCampRepository {

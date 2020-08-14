@@ -1,4 +1,4 @@
-package com.bee.master.common.ddd.framework;
+package com.bee.master.infrastructure.ddd.framework;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

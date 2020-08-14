@@ -1,4 +1,4 @@
-package com.bee.master.common.configuration;
+package com.bee.master.infrastructure.configuration;
 
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
