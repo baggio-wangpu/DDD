@@ -1,5 +1,7 @@
 ### 介绍
-这是一个基于Spring Boot，DDD洋葱模型的代码demo。
+这是一个基于事件驱动的DDD领域模型框架demo，融合了DDD和洋葱模型:
+
+https://github.com/baggio-wangpu/DDD/blob/master/src/main/resources/image/union.jpg
 
 
 ### 本地环境启动  
