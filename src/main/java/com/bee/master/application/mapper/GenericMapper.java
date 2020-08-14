@@ -1,7 +1,10 @@
 package com.bee.master.application.mapper;
 
+import com.bee.master.adapter.jpa.entity.directionalPackage.DirectionalPackagePO;
 import com.bee.master.adapter.jpa.entity.trainingCamp.TrainingCampPO;
+import com.bee.master.application.vo.DirectionalPackageVO;
 import com.bee.master.application.vo.TrainingCampVO;
+import com.bee.master.domain.directionalPackage.DirectionalPackage;
 import com.bee.master.domain.trainingcamp.TrainingCamp;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -20,4 +23,8 @@ public interface GenericMapper {
     TrainingCampPO trainingCampToPO(TrainingCamp trainingCamp);
 
     TrainingCampVO trainingCampPOToVO(TrainingCampPO trainingCampPO);
+
+    DirectionalPackagePO directionalPackageToPO(DirectionalPackage directionalPackage);
+
+    DirectionalPackageVO directionalPackageToVO(DirectionalPackage directionalPackage);
 }

@@ -1,6 +1,6 @@
 package com.bee.master.domain.trainingcamp;
 
-import com.bee.master.infrastructure.ddd.framework.AggregateRoot;
+import com.bee.master.domain.framework.AggregateRoot;
 import com.bee.master.infrastructure.utils.SnowFlake;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

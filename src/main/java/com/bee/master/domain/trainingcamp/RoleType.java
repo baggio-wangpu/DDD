@@ -1,6 +1,6 @@
 package com.bee.master.domain.trainingcamp;
 
-import com.bee.master.infrastructure.ddd.framework.ValueObject;
+import com.bee.master.domain.framework.ValueObject;
 
 @ValueObject
 public enum  RoleType {
