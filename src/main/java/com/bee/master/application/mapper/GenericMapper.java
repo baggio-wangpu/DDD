@@ -1,6 +1,6 @@
 package com.bee.master.application.mapper;
 
-import com.bee.master.adapter.jpa.entity.TrainingCampPO;
+import com.bee.master.adapter.jpa.entity.trainingCamp.TrainingCampPO;
 import com.bee.master.application.vo.TrainingCampVO;
 import com.bee.master.domain.trainingcamp.TrainingCamp;
 import org.mapstruct.Mapper;

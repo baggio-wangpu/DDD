@@ -1,6 +1,6 @@
 package com.bee.master;
 
-import com.bee.master.domain.framework.Entity;
+import com.bee.master.common.ddd.framework.Entity;
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.lang.ArchRule;

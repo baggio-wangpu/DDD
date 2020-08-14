@@ -1,7 +1,7 @@
 package com.bee.master.adapter.restful.controller;
 
-import com.bee.master.application.request.LoginRequest;
-import com.bee.master.application.service.UserReadService;
+import com.bee.master.application.request.trainingCamp.LoginRequest;
+import com.bee.master.application.service.trainingCamp.UserReadService;
 import com.bee.master.application.vo.LoginVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,9 +1,9 @@
 package com.bee.master.adapter.client;
 
-import com.bee.master.application.request.LoginRequest;
-import com.bee.master.application.request.PasswordResetApplyRequest;
-import com.bee.master.application.request.PasswordResetRequest;
-import com.bee.master.application.request.RegisterRequest;
+import com.bee.master.application.request.trainingCamp.LoginRequest;
+import com.bee.master.application.request.trainingCamp.PasswordResetApplyRequest;
+import com.bee.master.application.request.trainingCamp.PasswordResetRequest;
+import com.bee.master.application.request.trainingCamp.RegisterRequest;
 import com.bee.master.application.vo.LoginVO;
 import com.bee.master.application.vo.UserVO;
 import org.springframework.cloud.openfeign.FeignClient;

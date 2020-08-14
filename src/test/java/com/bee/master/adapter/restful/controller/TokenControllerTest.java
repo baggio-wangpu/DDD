@@ -1,9 +1,9 @@
 package com.bee.master.adapter.restful.controller;
 
 import com.bee.master.adapter.client.UserClient;
-import com.bee.master.adapter.jpa.repository.TraineeJpaRepository;
-import com.bee.master.adapter.jpa.repository.TrainerJpaRepository;
-import com.bee.master.application.request.LoginRequest;
+import com.bee.master.adapter.jpa.repository.trainingCamp.TraineeJpaRepository;
+import com.bee.master.adapter.jpa.repository.trainingCamp.TrainerJpaRepository;
+import com.bee.master.application.request.trainingCamp.LoginRequest;
 import com.bee.master.application.vo.LoginVO;
 import com.bee.master.application.vo.UserVO;
 import com.bee.master.common.BaseAPITest;
