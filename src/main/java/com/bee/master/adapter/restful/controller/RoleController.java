@@ -18,7 +18,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("tokens")
 @AllArgsConstructor
-public class TokenController {
+public class RoleController {
 
     private final UserReadService userReadService;
 

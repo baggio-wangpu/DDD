@@ -22,7 +22,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @Sql({"/sqls/insert_roles_data.sql"})
-class TokenControllerTest extends BaseAPITest {
+class RoleControllerTest extends BaseAPITest {
 
   @Autowired
   private UserClient userClient;

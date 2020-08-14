@@ -7,7 +7,7 @@ public interface TrainingCampRepository {
 
     TrainingCamp save(TrainingCamp trainingCamp, String createUserId);
 
-    TrainingCamp findById(Long trainingCampId);
-
     int update(TrainingCamp updateTrainingCamp);
+
+    TrainingCamp findById(Long trainingCampId);
 }
